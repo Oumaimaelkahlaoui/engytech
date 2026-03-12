@@ -3,8 +3,8 @@ export default function MainFooter() {
     <footer className="footer">
       <div className="footer__top">
         <div className="footer__brand">
-          <span className="logo-mark">E</span>
-          <span className="logo-text">ngytech</span>
+           
+    <img src="/unnamed.png" className="logo-img" />
         </div>
 
         <nav className="footer__nav">

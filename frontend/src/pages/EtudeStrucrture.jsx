@@ -4,8 +4,8 @@ export default function EtudeStructure(){
 
     return(
         <div>
-                    <h1>demande devis etude structure</h1>
-                    <ClientForm />
+                     <ClientForm devisName="Étude de structure (béton armé / métallique)" />
+
         </div>
     )
 }

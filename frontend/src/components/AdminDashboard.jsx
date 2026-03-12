@@ -16,6 +16,7 @@ export default function AdminDashboard() {
       .from("demandes_devis")
       .select(`
         *,
+        devis_types(nom_devis),
         documents(file_name, file_path)
       `)
       .order("created_at", { ascending: false });
@@ -63,6 +64,8 @@ export default function AdminDashboard() {
           <p><b>Type Projet:</b> {d.type_projet}</p>
           <p><b>Surface:</b> {d.surface} m²</p>
            <p><b>Type Structuré:</b> {d.type_structure}</p>
+          <p><b>Type Devis:</b> {d.devis_types?.nom_devis}</p>
+
           <div>
             <b>Documents:</b>
             {d.documents?.length === 0 && <p>Aucun fichier</p>}

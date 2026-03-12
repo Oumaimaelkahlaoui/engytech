@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { supabase } from '../../../backend/supabaseClient'
+import Navbar from "./Navbar";
+import Footer from "./MainFooter";
 
 export default function ClientForm() {
   const [nomcompelt, setNomCompelt] = useState('')
@@ -36,11 +38,25 @@ export default function ClientForm() {
     e.preventDefault()
 
     try {
+      // récupérer automatiquement id du devis
+      const { data: devisData, error: devisError } = await supabase
+        .from("devis_types")
+        .select("id")
+        .eq("nom_devis", "Étude de structure (béton armé / métallique)")
+        .single()
+
+      if (devisError) {
+        console.log("ERREUR TYPE DEVIS:", devisError)
+        return
+      }
+
+      const devisTypeId = devisData.id
       // 1️⃣ Insert demande
       const { data: newDemande, error: insertError } = await supabase
         .from('demandes_devis')
         .insert([
-          { 
+          {    
+           devis_type_id: devisTypeId, // 👈 هذا هو المهم
             nomcompelt, 
             email, 
             telephone, 
@@ -99,55 +115,65 @@ export default function ClientForm() {
   }
 
   return (
+   <>
+       <Navbar />
+ 
     <form onSubmit={handleSubmit}>
+      
+         {/* Radio buttons pour type de structure */}
+     <div style={{ margin: '15px 0' }}>
+      <p style={{ marginBottom: '5px', fontWeight: 'bold' }}>Type de structure :</p>
+      <label style={{ display: 'inline-flex', alignItems: 'center', marginRight: '20px', cursor: 'pointer' }}>
+        <input
+          type="radio"
+          name="typeStructure"
+          value="béton armé"
+          checked={typeStructure === 'béton armé'}
+          onChange={e => setTypeStructure(e.target.value)}
+          style={{ marginRight: '5px' }}
+        />
+        Béton armé
+      </label>
+
+      <label style={{ display: 'inline-flex', alignItems: 'center', marginRight: '20px', cursor: 'pointer' }}>
+        <input
+          type="radio"
+          name="typeStructure"
+          value="charpente métallique"
+          checked={typeStructure === 'charpente métallique'}
+          onChange={e => setTypeStructure(e.target.value)}
+          style={{ marginRight: '5px' }}
+        />
+        Charpente métallique
+      </label>
+
+      <label style={{ display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }}>
+        <input
+          type="radio"
+          name="typeStructure"
+          value="mixte"
+          checked={typeStructure === 'mixte'}
+          onChange={e => setTypeStructure(e.target.value)}
+          style={{ marginRight: '5px' }}
+        />
+        Mixte
+      </label>
+    </div> 
+
       <input value={nomcompelt} onChange={e => setNomCompelt(e.target.value)} placeholder="Nom Complet" required />
       <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" type="email" required />
       <input value={telephone} onChange={e => setTelephone(e.target.value)} placeholder="Téléphone" required />
       <input value={typeProjet} onChange={e => setTypeProjet(e.target.value)} placeholder="Type de projet" required />
       <input value={surface} onChange={e => setSurface(e.target.value)} placeholder="Surface" type="number" required />
 
-      {/* Radio buttons pour type de structure */}
-     <div style={{ margin: '15px 0' }}>
-  <p style={{ marginBottom: '5px', fontWeight: 'bold' }}>Type de structure :</p>
-  <label style={{ display: 'inline-flex', alignItems: 'center', marginRight: '20px', cursor: 'pointer' }}>
-    <input
-      type="radio"
-      name="typeStructure"
-      value="béton armé"
-      checked={typeStructure === 'béton armé'}
-      onChange={e => setTypeStructure(e.target.value)}
-      style={{ marginRight: '5px' }}
-    />
-    Béton armé
-  </label>
-
-  <label style={{ display: 'inline-flex', alignItems: 'center', marginRight: '20px', cursor: 'pointer' }}>
-    <input
-      type="radio"
-      name="typeStructure"
-      value="charpente métallique"
-      checked={typeStructure === 'charpente métallique'}
-      onChange={e => setTypeStructure(e.target.value)}
-      style={{ marginRight: '5px' }}
-    />
-    Charpente métallique
-  </label>
-
-  <label style={{ display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }}>
-    <input
-      type="radio"
-      name="typeStructure"
-      value="mixte"
-      checked={typeStructure === 'mixte'}
-      onChange={e => setTypeStructure(e.target.value)}
-      style={{ marginRight: '5px' }}
-    />
-    Mixte
-  </label>
-</div> 
-
+   
       <input type="file" multiple onChange={handleFiles} />
       <button type="submit">Envoyer Devis</button>
+        
     </form>
+        <Footer />
+  </>
+   
   )
+
 }

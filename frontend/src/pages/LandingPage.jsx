@@ -20,20 +20,20 @@ function useReveal() {
 
 const HERO_SLIDES = [
   {
-    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=90",
-    alt: "Villa moderne au coucher du soleil",
+    src: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1920&q=90",
+    alt: "Intérieur lumineux moderne",
   },
   {
-    src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=90",
-    alt: "Architecture minimaliste",
+    src: "https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?w=1920&q=90",
+    alt: "Architecture lumineuse contemporaine",
   },
   {
-    src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1920&q=90",
-    alt: "Résidence de luxe",
+    src: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?w=1920&q=90",
+    alt: "Espace de vie clair et aéré",
   },
   {
-    src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1920&q=90",
-    alt: "Maison contemporaine",
+    src: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=1920&q=90",
+    alt: "Villa moderne lumineuse",
   },
 ];
 
@@ -160,8 +160,8 @@ export default function LandingPage() {
         <div className="about__right" data-reveal>
           <div className="about__img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80"
-              alt="Architecture intérieure"
+              src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=80"
+              alt="Architecture intérieure lumineuse"
             />
             <div className="about__img-caption">Projet — Villa Moderne, 2024</div>
           </div>
@@ -193,7 +193,7 @@ export default function LandingPage() {
               num: "01",
               title: "Étude Architecturale",
               desc: "Conception complète de A à Z : esquisses, avant-projet, dépôt de permis, plans d'exécution.",
-              img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80",
+              img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80",
             },
             {
               num: "02",
@@ -205,13 +205,13 @@ export default function LandingPage() {
               num: "03",
               title: "Suivi de Chantier",
               desc: "Pilotage de l'exécution, coordination des corps d'état, réception des travaux.",
-              img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80",
+              img: "https://images.unsplash.com/photo-1590725121839-892b458a74fe?w=600&q=80",
             },
             {
               num: "04",
               title: "Design d'Intérieur",
               desc: "Aménagement, sélection des matériaux, rendus 3D photoréalistes.",
-              img: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80",
+              img: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?w=600&q=80",
             },
           ].map(({ num, title, desc, img }) => (
             <div className="service-card" key={num} data-reveal>
@@ -233,8 +233,8 @@ export default function LandingPage() {
       <section className="feature-split">
         <div className="feature-split__img" data-reveal>
           <img
-            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80"
-            alt="Plan architectural"
+            src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=80"
+            alt="Plan architectural lumineux"
           />
           <div className="feature-split__badge">
             <span>98%</span>
@@ -268,10 +268,10 @@ export default function LandingPage() {
         </div>
         <div className="projects__grid">
           {[
-            { title: "Villa Moderne", tag: "Résidentiel", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", size: "large" },
-            { title: "Immeuble R+4", tag: "Collectif", img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80", size: "small" },
+            { title: "Villa Moderne", tag: "Résidentiel", img: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&q=80", size: "large" },
+            { title: "Immeuble R+4", tag: "Collectif", img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&q=80", size: "small" },
             { title: "Complexe Commercial", tag: "Tertiaire", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80", size: "small" },
-            { title: "Résidence Balnéaire", tag: "Luxe", img: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80", size: "medium" },
+            { title: "Résidence Balnéaire", tag: "Luxe", img: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80", size: "medium" },
           ].map(({ title, tag, img, size }) => (
             <div className={`project-card project-card--${size}`} key={title} data-reveal>
               <img src={img} alt={title} />
@@ -294,7 +294,11 @@ export default function LandingPage() {
             — une architecture qui conjugue élégance et fonctionnalité.
           </blockquote>
           <cite>
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" />
+            <img
+              src="https://randomuser.me/api/portraits/men/32.jpg"
+              alt="Client"
+              className="cite-avatar"
+            />
             <div>
               <strong>Mehdi Benali</strong>
               <span>Promoteur Immobilier, Casablanca</span>
@@ -337,9 +341,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── FOOTER ── */}
-    
-        
-      <Footer/>
+      <Footer />
     </>
   );
 }

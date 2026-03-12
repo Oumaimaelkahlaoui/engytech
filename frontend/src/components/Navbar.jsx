@@ -13,10 +13,10 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
+    <nav className={`navbar navbar--visible ${scrolled ? "navbar--scrolled" : ""}`}>
+      
       <div className="navbar__logo">
-        <span className="logo-mark">E</span>
-        <span className="logo-text">ngytech</span>
+        <img src="/unnamed.png" className="logo-img" />
       </div>
 
       <ul className={`navbar__links ${menuOpen ? "navbar__links--open" : ""}`}>
@@ -29,10 +29,7 @@ export default function Navbar() {
         ))}
       </ul>
 
-      <button
-        className="navbar__cta"
-        onClick={() => navigate("/devis")}
-      >
+      <button className="navbar__cta" onClick={() => navigate("/devis")}>
         Devis gratuit →
       </button>
 
@@ -40,8 +37,11 @@ export default function Navbar() {
         className={`burger ${menuOpen ? "burger--open" : ""}`}
         onClick={() => setMenuOpen(!menuOpen)}
       >
-        <span /><span /><span />
+        <span />
+        <span />
+        <span />
       </button>
+
     </nav>
   );
 }
