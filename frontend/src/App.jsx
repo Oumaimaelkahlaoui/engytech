@@ -3,6 +3,16 @@ import LandingPage from "./pages/LandingPage";
 import DevisPage from "./pages/DevisPage";
 import EtudeStructure from "./pages/EtudeStrucrture";
 import AdminPage from "./pages/AdminPage";
+import EtudeVRD from "./pages/devis/EtudeVRD";
+import OPC from "./pages/devis/OPC";
+import NoticeIncendie from "./pages/devis/Noticencendie"
+import NoteCalculs from "./pages/devis/NoteCalculs"
+import ExpertiseTechnique from "./pages/devis/ExpertiseTechnique"
+import EfficaciteEnergetique from "./pages/devis/EfficaciteEnergetique"
+import SuiviContrôle from "./pages/devis/SuiviContrôle"
+import Cps from "./pages/devis/Cps"
+
+
 
 
 export default function App() {
@@ -13,6 +23,16 @@ export default function App() {
        <Route path="/admin" element={<AdminPage/>}/>
 
       <Route path="/devis/etude-structure" element={<EtudeStructure/>}/>
+       <Route path="/devis/etude-vrd" element={<EtudeVRD />} /> 
+      <Route path="/devis/opc" element={<OPC />} />
+      <Route path="/devis/notice-securite-incendie" element={<NoticeIncendie />} />
+      <Route path="/devis/note-calculs" element={<NoteCalculs />} />
+      <Route path="/devis/expertise-technique" element={<ExpertiseTechnique />} />
+      <Route path="/devis/efficacite-energetique" element={<EfficaciteEnergetique />} />
+      <Route path="/devis/suivi-controle-technique" element={<SuiviContrôle />} />
+       <Route path="/devis/cps-metres-estimation" element={<Cps />} />
+
+
     </Routes>
   );
 }

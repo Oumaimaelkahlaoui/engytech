@@ -1,10 +1,10 @@
-import ClientForm from "../components/ClientForm";
+import ClientForm from "./devis/ClientForm";
 
 export default function EtudeStructure(){
 
     return(
         <div>
-                     <ClientForm devisName="Étude de structure (béton armé / métallique)" />
+                     <ClientForm devisName="" />
 
         </div>
     )

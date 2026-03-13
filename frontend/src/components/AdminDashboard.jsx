@@ -65,6 +65,12 @@ export default function AdminDashboard() {
           <p><b>Surface:</b> {d.surface} m²</p>
            <p><b>Type Structuré:</b> {d.type_structure}</p>
           <p><b>Type Devis:</b> {d.devis_types?.nom_devis}</p>
+          <p><b>Budget estimatif:</b> {d.budget_projet} MAD</p>
+          <p><b>Date prévue de démarrage:</b> {d.date_demarrage}</p>
+          <p><b>Localisation du projet:</b> {d.localisation }</p>
+          <p><b>Type de CPS:</b> {d.type_cps }</p>
+
+
 
           <div>
             <b>Documents:</b>
