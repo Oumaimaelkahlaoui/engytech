@@ -459,9 +459,10 @@ input, textarea, select {
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--teal-light);
+  color: var(--cloud);
   margin-bottom: var(--space-md);
   animation: fadeUp 1s var(--ease-out) 0.2s both;
+  
 }
 
 .hero__content { position: relative; z-index: 2; max-width: min(680px, 100%); }
@@ -480,7 +481,7 @@ input, textarea, select {
 .line--1 { animation: slideInLeft 1.1s var(--ease-out) 0.3s both; }
 .line--2 {
   font-style: italic;
-  color: var(--teal-light);
+  color: var(--primary-dark);
   animation: slideInLeft 1.1s var(--ease-out) 0.5s both;
 }
 

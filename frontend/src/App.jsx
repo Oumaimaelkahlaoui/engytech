@@ -14,7 +14,6 @@ import Cps from "./pages/devis/Cps"
 
 
 
-
 export default function App() {
   return (
     <Routes>
@@ -30,7 +29,9 @@ export default function App() {
       <Route path="/devis/expertise-technique" element={<ExpertiseTechnique />} />
       <Route path="/devis/efficacite-energetique" element={<EfficaciteEnergetique />} />
       <Route path="/devis/suivi-controle-technique" element={<SuiviContrôle />} />
-       <Route path="/devis/cps-metres-estimation" element={<Cps />} />
+      <Route path="/devis/cps-metres-estimation" element={<Cps />} />
+
+
 
 
     </Routes>

@@ -384,15 +384,13 @@ const S = {
 /* ─────────────────────────────────────────
    COMPONENT
 ───────────────────────────────────────── */
-export default function CliCpsentForm() {
+export default function EtudeVRD() {
   const [nomcompelt, setNomCompelt]     = useState('')
   const [email, setEmail]               = useState('')
   const [telephone, setTelephone]       = useState('')
   const [typeProjet, setTypeProjet]     = useState('')
   const [surface, setSurface]           = useState('')
   const [files, setFiles]               = useState([])
-  const [typeStructure, setTypeStructure] = useState('')
-  const [typeCps, setTypeCps] = useState('')
   const [focusedField, setFocusedField] = useState(null)
   const [submitting, setSubmitting]     = useState(false)
   const [fileDrag, setFileDrag]         = useState(false)
@@ -426,7 +424,7 @@ const handleFiles = (e) => {
       const { data: devisData, error: devisError } = await supabase
         .from("devis_types")
         .select("id")
-        .eq("nom_devis", "cps ,metres&estimation")
+        .eq("nom_devis", "Étude VRD (assainissement, voirie, réseaux)")
         .single()
 
       if (devisError) { console.log("ERREUR TYPE DEVIS:", devisError); return }
@@ -439,8 +437,6 @@ const handleFiles = (e) => {
           nomcompelt, email, telephone,
           type_projet: typeProjet,
           surface,
-          type_structure: typeStructure,
-          type_cps: typeCps,
         }])
         .select()
 
@@ -487,17 +483,7 @@ const handleFiles = (e) => {
     return () => document.getElementById(id)?.remove();
   }, []);
 
-  const RADIO_OPTIONS = [
-    { value: "béton armé",           label: "Béton armé" },
-    { value: "charpente métallique", label: "Charpente métallique" },
-    { value: "mixte",                label: "Mixte" },
-  ];
-  const CPS_OPTIONS = [
-  { value: "gros oeuvre", label: "Gros œuvre" },
-  { value: "second oeuvre", label: "Second œuvre" },
-  { value: "vrd", label: "VRD" },
-  { value: "tous corps d'etat", label: "Tous corps d'état" },
-];
+
 {/*
   const INFO_ROWS = [
     { icon: "📧", label: "Email", value: "contact@engytech.ma", bg: "#f0f7ff" },
@@ -529,12 +515,13 @@ const handleFiles = (e) => {
                 <span style={S.heroEyeLine} />
                 Engytech — Bureau d'études
               </div>
-            <h1 style={S.heroH1}>
-  CPS & estimation <span style={S.heroItalic}>métrés</span>
-</h1>
-<p style={S.heroSub}>
-  Sélectionnez le type de travaux et envoyez vos plans pour obtenir une estimation rapide et précise.
-</p>
+             <h1 style={S.heroH1}>
+                Étude <span style={S.heroItalic}>VRD</span>
+                </h1>
+             <p style={S.heroSub}>
+                Étude des Voiries et Réseaux Divers — assainissement, voirie,
+                réseaux d'eau potable, électricité et télécommunication.
+                </p>
             </div>
             <div style={S.heroBadge}>
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ecda4", display: "inline-block" }} />
@@ -627,67 +614,13 @@ const handleFiles = (e) => {
                 />
               </div>
 
-              {/* Divider */}
-<div style={S.divider}>
-  <div style={S.dividerLine} />
-  <span style={S.dividerText}>Type de CPS</span>
-  <div style={S.dividerLine} />
-</div>
+        
 
-{/* Radio — type CPS */}
-<div style={S.fieldCol}>
-  <div style={S.radioGroup}>
-    {CPS_OPTIONS.map((opt) => {
-      const isSelected = typeCps === opt.value;
-      return (
-        <label
-          key={opt.value}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 9,
-            padding: "10px 18px",
-            borderRadius: 8,
-            border: `1.5px solid ${isSelected ? "#2a7fa5" : "#dde5f0"}`,
-            background: isSelected ? "rgba(42,127,165,0.07)" : "#f8fafd",
-            cursor: "pointer",
-            fontSize: "0.8125rem",
-            fontWeight: isSelected ? 500 : 300,
-            color: isSelected ? "#2a7fa5" : "#7a8faa",
-            transition: "all 0.2s",
-            userSelect: "none",
-            flexShrink: 0,
-          }}
-        >
-          <span style={{
-            width: 16,
-            height: 16,
-            borderRadius: "50%",
-            border: `2px solid ${isSelected ? "#2a7fa5" : "#c9d4e8"}`,
-            background: isSelected
-              ? "radial-gradient(circle at center, #2a7fa5 45%, transparent 46%)"
-              : "#fff",
-          }} />
 
-          <input
-            type="radio"
-            name="typeCps"
-            value={opt.value}
-            checked={isSelected}
-            onChange={(e) => setTypeCps(e.target.value)}
-            style={{ display: "none" }}
-          />
-
-          {opt.label}
-        </label>
-      );
-    })}
-  </div>
-</div>
               {/* Divider */}
               <div style={S.divider}>
                 <div style={S.dividerLine} />
-                <span style={S.dividerText}>Documents (optionnel)</span>
+                <span style={S.dividerText}>Documents (Plan topo de masse ...)</span>
                 <div style={S.dividerLine} />
               </div>
 
