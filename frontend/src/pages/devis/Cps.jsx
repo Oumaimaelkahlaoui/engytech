@@ -426,7 +426,7 @@ const handleFiles = (e) => {
       const { data: devisData, error: devisError } = await supabase
         .from("devis_types")
         .select("id")
-        .eq("nom_devis", "cps ,metres&estimation")
+        .eq("nom_devis", "CPS - Métré - estimation")
         .single()
 
       if (devisError) { console.log("ERREUR TYPE DEVIS:", devisError); return }
