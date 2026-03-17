@@ -300,7 +300,7 @@ const TYPES = [
       { head: "Actions",        render: (d, cb) => <ActionCell d={d} cb={cb} />, isAction: true },
     ],
   },
-  { key: "Étude d'Efficacité Énergétique du Bâtiment",            label: "Efficacité énergétique", icon: Ic.energy,    color: "#059669", bg: "#ecfdf5",
+  { key: "Étude d’Efficacité Énergétique du Bâtiment",            label: "Efficacité énergétique", icon: Ic.energy,    color: "#059669", bg: "#ecfdf5",
     cols: [
       { head: "Client",         render: (d)     => <ClientCell d={d} /> },
       { head: "Type projet",    render: (d)     => d.type_projet || <Dash /> },
