@@ -11,6 +11,7 @@ import ExpertiseTechnique from "./pages/devis/ExpertiseTechnique"
 import EfficaciteEnergetique from "./pages/devis/EfficaciteEnergetique"
 import SuiviContrôle from "./pages/devis/SuiviContrôle"
 import Cps from "./pages/devis/Cps"
+import Carriere from "./pages/carriere";
 
 
 
@@ -31,6 +32,7 @@ export default function App() {
       <Route path="/devis/suivi-controle-technique" element={<SuiviContrôle />} />
       <Route path="/devis/cps-metres-estimation" element={<Cps />} />
 
+      <Route path="/Carriere" element={<Carriere />} />
 
 
 

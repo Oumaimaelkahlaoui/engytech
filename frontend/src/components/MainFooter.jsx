@@ -8,8 +8,8 @@ export default function MainFooter() {
         </div>
 
         <nav className="footer__nav">
-          {["Accueil", "Services", "Projets", "Contact"].map((l) => (
-            <a key={l} href="#">{l}</a>
+          {["Accueil", "Services", "Projets", "Contact" ,"Carriere"].map((l) => (
+            <a key={l} href="/">{l}</a>
           ))}
         </nav>
 
