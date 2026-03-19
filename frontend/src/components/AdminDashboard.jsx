@@ -43,6 +43,12 @@ const Ic = {
   filetext:  (c="currentColor") => <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>,
   chevDown:  (c="currentColor") => <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>,
   chevUp:    (c="currentColor") => <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"/></svg>,
+  // ── Factures icons
+  invoice:   (c="currentColor") => <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>,
+  plus:      (c="currentColor") => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>,
+  euro:      (c="currentColor") => <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 10h12M4 14h12M19.5 5a9.5 9.5 0 1 0 0 14"/></svg>,
+  printer:   (c="currentColor") => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>,
+  eye:       (c="currentColor") => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>,
 };
 
 /* ══════════════════════════════════════════════════════════════
@@ -266,6 +272,41 @@ function injectAll() {
     .g-cand-msg { background: #f8fafd; border-radius: 10px; padding: 13px 14px; border: 1px solid #edf1f8; font-size: 0.81rem; color: #334155; line-height: 1.65; white-space: pre-wrap; margin-top: 2px; }
 
     @media (max-width: 768px) { .g-side { width: 200px; min-width: 200px; } .g-content { padding: 14px; } .g-modal-grid { grid-template-columns: 1fr; } }
+
+    /* ── FACTURES ── */
+    .g-fact-form { background: #fff; border-radius: 15px; border: 1px solid #e8edf5; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 22px rgba(0,0,0,0.04); overflow: hidden; }
+    .g-fact-form-header { padding: 14px 20px; border-bottom: 1px solid #edf0f7; background: #f8fafd; display: flex; align-items: center; gap: 10px; }
+    .g-fact-form-body { padding: 22px; }
+    .g-fact-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+    .g-fact-grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+    .g-fact-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; margin-bottom: 5px; display: block; }
+    .g-fact-input { width: 100%; padding: 9px 12px; border-radius: 9px; border: 1.5px solid #e2e8f4; font-size: 0.82rem; color: #1e2940; background: #f8fafc; font-family: 'Inter', sans-serif; transition: border-color 0.15s, box-shadow 0.15s; }
+    .g-fact-input:focus { outline: none; border-color: #2a7fa5; box-shadow: 0 0 0 3px rgba(42,127,165,0.12); background: #fff; }
+    .g-items-table { width: 100%; border-collapse: collapse; margin-bottom: 0; }
+    .g-items-table th { padding: 8px 10px; text-align: left; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; background: #f8fafc; border-bottom: 1.5px solid #edf0f7; }
+    .g-items-table td { padding: 7px 6px; border-bottom: 1px solid #f0f3fa; vertical-align: middle; }
+    .g-items-table tr:last-child td { border-bottom: none; }
+    .g-item-input { width: 100%; padding: 7px 9px; border-radius: 7px; border: 1.5px solid transparent; font-size: 0.8rem; color: #1e2940; background: transparent; font-family: 'Inter', sans-serif; transition: border-color 0.15s, background 0.15s; }
+    .g-item-input:focus { outline: none; border-color: #2a7fa5; background: #fff; box-shadow: 0 0 0 2px rgba(42,127,165,0.1); }
+    .g-item-total { font-size: 0.8rem; font-weight: 700; color: #1e2940; padding: 7px 9px; white-space: nowrap; }
+    .g-btn-add-item { display: inline-flex; align-items: center; gap: 7px; padding: 8px 16px; border-radius: 8px; border: 1.5px dashed #c9d4e8; background: #f8fafd; color: #64748b; font-size: 0.75rem; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+    .g-btn-add-item:hover { border-color: #2a7fa5; color: #2a7fa5; background: #f0f7ff; }
+    .g-fact-totals { background: #f8fafd; border-radius: 11px; border: 1px solid #edf0f7; padding: 16px 20px; display: flex; flex-direction: column; gap: 9px; }
+    .g-fact-total-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: #64748b; }
+    .g-fact-total-row.ttc { font-size: 1rem; font-weight: 800; color: #1e2940; padding-top: 9px; border-top: 2px solid #e2e8f4; margin-top: 2px; }
+    .g-fact-total-row.ttc span:last-child { color: #2a7fa5; }
+    .g-btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 10px; border: none; background: linear-gradient(90deg,#1b2f6e,#2a7fa5,#3ab87a); color: #fff; font-weight: 700; font-size: 0.82rem; cursor: pointer; font-family: 'Inter', sans-serif; box-shadow: 0 3px 12px rgba(42,127,165,0.38); transition: all 0.15s; }
+    .g-btn-print:hover { box-shadow: 0 6px 20px rgba(42,127,165,0.48); transform: translateY(-1px); }
+    .g-fact-list-row:hover { background: #f0f4ff !important; }
+
+    /* Print preview */
+    .g-print-overlay { position: fixed; inset: 0; z-index: 400; background: rgba(8,12,28,0.65); backdrop-filter: blur(8px); display: flex; align-items: flex-start; justify-content: center; padding: 20px; overflow-y: auto; }
+    .g-print-doc { background: #fff; width: 794px; min-height: 1000px; padding: 56px 64px; box-shadow: 0 40px 100px rgba(0,0,0,0.3); position: relative; border-radius: 4px; }
+    .g-print-close { position: fixed; top: 18px; right: 24px; background: #fff; border: 1px solid #e2e8f4; width: 36px; height: 36px; border-radius: 10px; cursor: pointer; color: #64748b; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.12); z-index: 10; transition: all 0.13s; }
+    .g-print-close:hover { background: #f6f8fc; color: #1e2940; }
+    .g-print-btn { position: fixed; top: 18px; right: 70px; background: linear-gradient(90deg,#1b2f6e,#2a7fa5); border: none; padding: 8px 18px; border-radius: 10px; cursor: pointer; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; gap: 7px; box-shadow: 0 2px 8px rgba(42,127,165,0.35); transition: all 0.13s; z-index: 10; }
+    .g-print-btn:hover { box-shadow: 0 4px 14px rgba(42,127,165,0.5); transform: translateY(-1px); }
+    @media print { body > *:not(.engy-print-root) { display: none !important; } .engy-print-controls { display: none !important; } }
   `;
   document.head.appendChild(st);
 }
@@ -662,6 +703,653 @@ function CandidaturesView({ candidatures, onRefresh }) {
   );
 }
 
+
+/* ══════════════════════════════════════════════════════════════
+   PRINT PREVIEW MODAL
+══════════════════════════════════════════════════════════════ */
+function PrintPreview({ facture, items, onClose }) {
+  const ht  = Number(facture.total_ht  || 0);
+  const tva = Number(facture.tva       || 20);
+  const ttc = Number(facture.total_ttc || ht * (1 + tva / 100));
+  const fmt = (n) => Number(n || 0).toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  const dateStr = facture.date_facture
+    ? new Date(facture.date_facture + "T00:00:00").toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "numeric" })
+    : "—";
+
+  const UNITS = ["","UN","DEUX","TROIS","QUATRE","CINQ","SIX","SEPT","HUIT","NEUF","DIX","ONZE","DOUZE","TREIZE","QUATORZE","QUINZE","SEIZE","DIX-SEPT","DIX-HUIT","DIX-NEUF"];
+  const TENS  = ["","","VINGT","TRENTE","QUARANTE","CINQUANTE","SOIXANTE","SOIXANTE","QUATRE-VINGT","QUATRE-VINGT"];
+  function centToStr(n) {
+    if (n === 0) return "";
+    if (n < 20) return UNITS[n];
+    const t = Math.floor(n / 10), u = n % 10;
+    if (t === 7 || t === 9) return TENS[t - 1] + "-" + UNITS[10 + u];
+    return TENS[t] + (u === 1 && t !== 8 ? "-ET-UN" : u > 0 ? "-" + UNITS[u] : "");
+  }
+  function toWords(n) {
+    n = Math.round(n);
+    if (n === 0) return "ZÉRO";
+    let r = "";
+    if (n >= 1000000) { const m = Math.floor(n / 1000000); r += (m === 1 ? "UN MILLION " : toWords(m) + " MILLIONS "); n %= 1000000; }
+    if (n >= 1000)    { const k = Math.floor(n / 1000);    r += (k === 1 ? "MILLE " : toWords(k) + " MILLE "); n %= 1000; }
+    if (n >= 100)     { const c = Math.floor(n / 100);     r += (c === 1 ? "CENT " : UNITS[c] + " CENT" + (n % 100 === 0 && c > 1 ? "S " : " ")); n %= 100; }
+    if (n > 0)        r += centToStr(n);
+    return r.trim();
+  }
+  const ttcWords = toWords(Math.round(ttc)) + " DIRHAMS TTC";
+
+  const prestataire_nom     = facture.prestataire_nom     || "ARCH ENGY TECH";
+  const prestataire_adresse = facture.prestataire_adresse || "ROUIDATE 3 N°121 1 MARRAKECH";
+  const prestataire_ice     = facture.prestataire_ice     || "003908151000015";
+  const F = "Arial, Helvetica, sans-serif";
+
+  /* ── Style helpers ── */
+  const thS = (al="left") => ({
+    background: "#1b3a6b", color: "#fff",
+    padding: "7px 10px", fontSize: 11, fontWeight: "bold",
+    textAlign: al, border: "1px solid #2a5080",
+    whiteSpace: "nowrap", verticalAlign: "middle",
+  });
+  const tdS = (al="left", bold=false, bg="#fff") => ({
+    padding: "8px 10px", fontSize: 11, textAlign: al,
+    fontWeight: bold ? "bold" : "normal",
+    background: bg, border: "1px solid #c8d4e8",
+    color: "#111", verticalAlign: "middle",
+  });
+  const row = { display:"flex", gap:0, fontSize:11.5, lineHeight:"1.85", alignItems:"baseline" };
+  const kk  = { minWidth:80, color:"#333", fontFamily:F };
+  const vv  = { fontFamily:F };
+  const sec = { fontSize:13, fontWeight:"bold", textDecoration:"underline", color:"#000", display:"block", marginBottom:6, fontFamily:F };
+
+  /* ══════════ LOGO SVG — exact Engytech ══════════
+     Icon: stylized "E" with curved leaf + arrow
+     Text: gradient ENGY (green→teal) + TECH (navy)
+  ══════════════════════════════════════════════ */
+  const EngyLogo = () => (
+    <img src="/unnamed.png" alt="Engytech Logo"
+      style={{ height: 129, width: "auto", objectFit: "contain", display: "block" , margin: "0 auto"  // ← centre horizontalement
+}} />
+  );
+
+  /* ── Watermark logo (background) ── */
+  const WatermarkLogo = () => (
+    <img src="/unnamed1.png" alt=""
+      style={{ position:"absolute", top:"83%", left:"83%",
+        transform:"translate(-100%,-100%) rotate(-20deg)",
+        opacity:0.04, pointerEvents:"none", zIndex:0,
+        width: 600, objectFit:"contain" }} />
+  );
+
+  return (
+    <>
+      {/* ── Print CSS: hide controls, show only doc ── */}
+      <style>{`
+        @media print {
+          body > * { display: none !important; }
+          .engy-print-root { display: block !important; position: fixed !important;
+            inset: 0 !important; z-index: 9999 !important; background: white !important; }
+          .engy-print-controls { display: none !important; }
+          .engy-print-doc { box-shadow: none !important; margin: 0 !important; border-radius: 0 !important; width: 100% !important; min-height: 100vh !important; }
+          @page { margin: 0; size: A4; }
+        }
+      `}</style>
+
+      <div className="engy-print-root g-print-overlay">
+        {/* ── Controls (hidden on print) ── */}
+        <div className="engy-print-controls"
+          style={{ position:"fixed", top:16, right:16, display:"flex", gap:8, zIndex:10 }}>
+          <button className="g-print-btn" onClick={() => window.print()}>
+            {Ic.printer("#fff")} Imprimer / PDF
+          </button>
+          <button className="g-print-close" onClick={onClose}>{Ic.close()}</button>
+        </div>
+
+        {/* ════════════ DOCUMENT A4 ════════════ */}
+        <div className="engy-print-doc"
+          style={{ background:"#fff", width:794, minHeight:1019,
+            padding:"44px 56px 100px", fontFamily:F, color:"#000",
+            position:"relative", boxSizing:"border-box",
+            boxShadow:"0 20px 60px rgba(0,0,0,0.25)", overflow:"hidden" }}>
+
+          {/* Watermark */}
+          <WatermarkLogo />
+
+          {/* ── 1. HEADER: Logo centré + FACTURE droite ── */}
+          <div style={{ display:"flex", justifyContent:"space-between",
+            alignItems:"flex-start", marginBottom:20, position:"relative", zIndex:1 }}>
+            <EngyLogo />
+            <div style={{ paddingTop:130, textAlign:"right" }}>
+              <span style={{ fontFamily:F, fontSize:24, fontWeight:"bold",
+                color:"#1b3a6b", textDecoration:"underline", letterSpacing:3 }}>
+                FACTURE
+              </span>
+            </div>
+          </div>
+
+          {/* ── 2. PRESTATAIRE ── */}
+          <div style={{ marginBottom:14, position:"relative", zIndex:1 }}>
+            <span style={sec}>Prestataire :</span>
+            <div style={row}><span style={kk}>Nom</span><span style={{ fontFamily:F }}>:&nbsp;</span><span style={vv}>{prestataire_nom}</span></div>
+            <div style={row}><span style={kk}>Adresse</span><span style={{ fontFamily:F }}>:&nbsp;</span><span style={vv}>{prestataire_adresse}</span></div>
+            <div style={row}><span style={kk}>ICE</span><span style={{ fontFamily:F }}>:&nbsp;</span><span style={vv}>{prestataire_ice}</span></div>
+          </div>
+
+          {/* ── 3. CLIENT ── */}
+          <div style={{ marginBottom:14, position:"relative", zIndex:1 }}>
+            <span style={sec}>Client :</span>
+            <div style={row}><span style={kk}>Nom</span><span style={{ fontFamily:F }}>:&nbsp;</span><span style={vv}>{facture.client_nom}</span></div>
+          </div>
+
+          {/* ── 4. INFORMATIONS FACTURE ── */}
+          <div style={{ marginBottom:20, position:"relative", zIndex:1 }}>
+            <span style={sec}>Informations Facture :</span>
+            <div style={row}><span style={kk}>N° Facture</span><span style={{ fontFamily:F }}>:&nbsp;</span><span style={vv}><strong>{facture.numero_facture}</strong></span></div>
+            <div style={row}><span style={kk}>Date N°</span><span style={{ fontFamily:F }}>:&nbsp;</span><span style={vv}>{dateStr}</span></div>
+            <div style={row}><span style={kk}>Devis Projet</span><span style={{ fontFamily:F }}>:&nbsp;</span><span style={vv}>{facture.devis_projet || "—"}</span></div>
+          </div>
+
+          {/* ── 5. TABLEAU ── */}
+          <table style={{ width:"100%", borderCollapse:"collapse", position:"relative", zIndex:1 }}>
+            <thead>
+              <tr>
+                <th style={{ ...thS("left"),   width:"42%" }}>Intitulé</th>
+                <th style={{ ...thS("center"), width:"8%"  }}>Unité</th>
+                <th style={{ ...thS("center"), width:"10%" }}>Qté</th>
+                <th style={{ ...thS("right"),  width:"20%" }}>Prix{"\n"}Unitaire</th>
+                <th style={{ ...thS("right"),  width:"20%" }}>Prix Hors{"\n"}Taxes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.map((item, i) => (
+                <tr key={i}>
+                  <td style={tdS("left",   false, i%2===0?"#eef3fb":"#fff")}>{item.intitule}</td>
+                  <td style={tdS("center", false, i%2===0?"#eef3fb":"#fff")}>{item.unite||"F"}</td>
+                  <td style={tdS("center", false, i%2===0?"#eef3fb":"#fff")}>{item.quantite}</td>
+                  <td style={tdS("right",  false, i%2===0?"#eef3fb":"#fff")}>{fmt(item.prix_unitaire)}</td>
+                  <td style={tdS("right",  true,  i%2===0?"#eef3fb":"#fff")}>{fmt(item.total)}</td>
+                </tr>
+              ))}
+              {/* ── Totaux ── */}
+              <tr>
+                <td colSpan={3} style={{ border:"none", background:"transparent" }}/>
+                <td style={{ ...tdS("right",false,"#eaeff8"), fontWeight:600 }}>Total HT</td>
+                <td style={{ ...tdS("right",true, "#eaeff8") }}>{fmt(ht)}</td>
+              </tr>
+              <tr>
+                <td colSpan={3} style={{ border:"none", background:"transparent" }}/>
+                <td style={{ ...tdS("right",false,"#eaeff8"), fontWeight:600 }}>TVA {tva}%</td>
+                <td style={{ ...tdS("right",true, "#eaeff8") }}>{fmt(ht * tva / 100)}</td>
+              </tr>
+              <tr>
+                <td colSpan={3} style={{ border:"none", background:"transparent" }}/>
+                <td style={{ ...tdS("right",true,"#1b3a6b"), color:"#fff", fontSize:12 }}>Total TTC</td>
+                <td style={{ ...tdS("right",true,"#1b3a6b"), color:"#fff", fontSize:12 }}>{fmt(ttc)}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          {/* ── 6. MONTANT EN LETTRES ── */}
+          <div style={{ marginTop:22, marginBottom:26, fontSize:11.5,
+            fontFamily:F, color:"#000", position:"relative", zIndex:1 }}>
+            La présente facture est arrêtée à la somme de&nbsp;
+            <strong>{ttcWords}</strong>
+          </div>
+
+          {/* ── 7. SIGNATURE ── */}
+          <div style={{ display:"flex", justifyContent:"center",
+            marginBottom:20, position:"relative", zIndex:1 }}>
+            <div style={{ border:"1.5px solid #1b3a6b", minWidth:330, minHeight:132 }}>
+              <div style={{ background:"#1b3a6b", color:"#fff", fontSize:11,
+                fontWeight:"bold", padding:"6px 14px", textAlign:"center", fontFamily:F }}>
+                Signature et Cachet {prestataire_nom}
+              </div>
+              <div style={{ height:137 }}/>
+            </div>
+          </div>
+
+          {/* ── 8. PIED DE PAGE (absolu en bas) ── */}
+          <div style={{ position:"absolute", bottom:0, left:-29, right:-29,
+            borderTop:"1.5px solid #1b3a6b", padding:"8px 28px 0",
+            textAlign:"center", fontSize:8.5, color:"#334155",
+            lineHeight:1.95, background:"#fff", fontFamily:F, zIndex:1 }}>
+            <div style={{ fontWeight:"bold", fontSize:9 }}>
+              {prestataire_nom} SARL.AU | Siège Social : ROUIDATE 3 N°121 – Marrakech (CP : 40000) – Maroc
+            </div>
+            <div>Capital : 100 000 Dhs – Taxe professionnelle : 45318122 – RC : 177925 – IF : 71876394 – ICE : {prestataire_ice}</div>
+            <div>Courriel : contact@archengytech.ma – GSM : 00212 6 62 25 78 79</div>
+            <div>R.I.B : 230 450 70472552102770036</div>
+            <div>I.B.A.N : MA 64230450704725522102770036 – CIHM MAMC</div>
+            <div style={{ height:8, marginTop:6,
+              background:"linear-gradient(90deg,#1b3a6b 0%,#2a7fa5 40%,#3ab87a 100%)" }}/>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   FACTURES VIEW
+══════════════════════════════════════════════════════════════ */
+const EMPTY_ITEM = () => ({ intitule: "", unite: "F", quantite: "50%", prix_unitaire: 0, total: 0 });
+
+function FacturesView() {
+  /* ── Tabs : "list" | "create" ── */
+  const [tab,          setTab]          = useState("list");
+  const [factures,     setFactures]     = useState([]);
+  const [search,       setSearch]       = useState("");
+  const [page,         setPage]         = useState(1);
+  const [previewFact,  setPreviewFact]  = useState(null);
+  const [previewItems, setPreviewItems] = useState([]);
+  const [saving,       setSaving]       = useState(false);
+
+  /* ── Create form state ── */
+  const [form, setForm] = useState({
+    numero_facture: "",
+    date_facture: new Date().toISOString().slice(0, 10),
+    // Prestataire (fixed Engytech info — editable)
+    prestataire_nom:     "ARCH ENGY TECH",
+    prestataire_adresse: "ROUIDATE 3 N°121 1 MARRAKECH",
+    prestataire_ice:     "003908151000015",
+    // Client
+    client_nom: "",
+    // Projet
+    devis_projet: "",
+    tva: 20,
+  });
+  const [items, setItems] = useState([EMPTY_ITEM()]);
+
+  useEffect(() => { fetchFactures(); }, []);
+  useEffect(() => { setPage(1); }, [search]);
+
+  async function fetchFactures() {
+    const { data, error } = await supabase
+      .from("factures")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (!error) setFactures(data || []);
+  }
+
+  /* ── Item helpers ── */
+function updateItem(i, field, val) {
+  setItems(prev => {
+    const next = [...prev];
+    next[i] = { ...next[i], [field]: val };
+
+    // 🔹 convertir quantité (% ou nombre)
+    const getQty = (qte) => {
+      if (!qte) return 0;
+      const num = parseFloat(qte);
+      if (isNaN(num)) return 0;
+      return qte.toString().includes("%") ? num / 100 : num;
+    };
+
+    const q = getQty(next[i].quantite);
+    const p = parseFloat(next[i].prix_unitaire) || 0;
+
+    next[i].total = q * p;
+
+    return next;
+  });
+}
+  function addItem()    { setItems(prev => [...prev, EMPTY_ITEM()]); }
+  function removeItem(i){ setItems(prev => prev.filter((_, idx) => idx !== i)); }
+
+const totalHT = items.reduce((sum, it) => {
+  return sum + (parseFloat(it.total) || 0);
+}, 0);
+
+const tvaRate = parseFloat(form.tva) || 0;
+const tvaAmt = totalHT * tvaRate / 100;
+
+const totalTTC = totalHT + tvaAmt;
+
+const fmt = (n) =>
+  new Intl.NumberFormat("fr-MA", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(isNaN(n) ? 0 : n);
+  /* ── Save facture ── */
+  async function saveFacture() {
+    if (!form.client_nom.trim()) { alert("Le nom du client est requis."); return; }
+    if (!form.numero_facture.trim()) { alert("Le numéro de facture est requis."); return; }
+    setSaving(true);
+    try {
+      const { data: factData, error: factErr } = await supabase
+        .from("factures")
+        .insert([{
+          numero_facture:      form.numero_facture,
+          client_nom:          form.client_nom,
+          devis_projet:        form.devis_projet || null,
+          date_facture:        form.date_facture,
+          total_ht:            totalHT,
+          tva:                 parseFloat(form.tva) || 20,
+          total_ttc:           totalTTC,
+        }])
+        .select()
+        .single();
+
+      if (factErr) { console.error(factErr); alert("Erreur lors de la création."); return; }
+
+      const factureId = factData.id;
+      const itemsToInsert = items
+        .filter(it => it.intitule.trim())
+        .map(it => ({
+          facture_id:   factureId,
+          intitule:     it.intitule,
+          quantite:     parseFloat(it.quantite) || 0,
+          prix_unitaire: parseFloat(it.prix_unitaire) || 0,
+          total:        parseFloat(it.total) || 0,
+        }));
+
+      if (itemsToInsert.length) {
+        const { error: itemErr } = await supabase.from("facture_items").insert(itemsToInsert);
+        if (itemErr) console.error(itemErr);
+      }
+
+      // Reset form
+      setForm({ numero_facture: "", client_nom: "", devis_projet: "", date_facture: new Date().toISOString().slice(0, 10), tva: 20 });
+      setItems([EMPTY_ITEM()]);
+      await fetchFactures();
+      setTab("list");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  /* ── Preview ── */
+  async function openPreview(fact) {
+    const { data } = await supabase.from("facture_items").select("*").eq("facture_id", fact.id).order("created_at");
+    setPreviewFact(fact);
+    setPreviewItems(data || []);
+  }
+
+  /* ── Delete ── */
+  async function deleteFact(id) {
+    if (!window.confirm("Supprimer cette facture ?")) return;
+    await supabase.from("factures").delete().eq("id", id);
+    fetchFactures();
+  }
+
+  const visible = factures.filter(f =>
+    !search || f.client_nom?.toLowerCase().includes(search.toLowerCase()) ||
+    f.numero_facture?.toLowerCase().includes(search.toLowerCase()) ||
+    f.devis_projet?.toLowerCase().includes(search.toLowerCase())
+  );
+  const current = visible.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  return (
+    <>
+      {/* TOP BAR */}
+      <div className="g-topbar">
+        <div className="g-topbar-left">
+          <div className="g-topbar-icon" style={{ background: "#f0fdf4" }}>{Ic.invoice("#059669")}</div>
+          <div>
+            <div className="g-topbar-title">Facturation</div>
+            <div className="g-topbar-sub">{factures.length} facture{factures.length !== 1 ? "s" : ""} · {factures.reduce((s, f) => s + (f.total_ttc || 0), 0).toLocaleString("fr-MA")} MAD TTC total</div>
+          </div>
+        </div>
+        <div className="g-topbar-right">
+          {tab === "list" && (
+            <>
+              <div className="g-search-wrap">
+                <span className="g-search-ico">{Ic.search("#94a3b8")}</span>
+                <input className="g-search" type="text" placeholder="Client, numéro, projet…" value={search} onChange={e => setSearch(e.target.value)} />
+              </div>
+              <button className="g-btn-print" onClick={() => setTab("create")}>
+                {Ic.plus("#fff")} Nouvelle facture
+              </button>
+            </>
+          )}
+          {tab === "create" && (
+            <button className="g-cancel" style={{ padding: "7px 14px" }} onClick={() => setTab("list")}>
+              {Ic.chevL()} Retour à la liste
+            </button>
+          )}
+        </div>
+      </div>
+
+      <div className="g-content fade-in">
+
+        {/* ─── LISTE ─── */}
+        {tab === "list" && (
+          <>
+            <div className="g-stats">
+              {[
+                { lbl: "Total factures",  val: factures.length,                                                                    ico: Ic.stat_list, c: "#2a7fa518" },
+                { lbl: "CA HT total",     val: `${factures.reduce((s,f)=>s+(f.total_ht||0),0).toLocaleString("fr-MA")} MAD`,      ico: Ic.euro,      c: "#10b98118" },
+                { lbl: "CA TTC total",    val: `${factures.reduce((s,f)=>s+(f.total_ttc||0),0).toLocaleString("fr-MA")} MAD`,     ico: Ic.euro,      c: "#6382ff18" },
+              ].map(({ lbl, val, ico, c }) => (
+                <div className="g-stat" key={lbl}>
+                  <div className="g-stat-ico" style={{ background: c }}>{ico(c.slice(0,-2))}</div>
+                  <div><div className="g-stat-val" style={{ fontSize: typeof val === "string" ? "0.9rem" : "1.45rem" }}>{val}</div><div className="g-stat-lbl">{lbl}</div></div>
+                </div>
+              ))}
+            </div>
+
+            <div className="g-card">
+              <div className="g-card-header">
+                <div className="g-card-header-left">
+                  <div className="g-card-header-dot" style={{ background: "#059669" }} />
+                  <span className="g-card-header-title">Liste des factures</span>
+                </div>
+                <span className="g-card-header-count">{visible.length} facture{visible.length !== 1 ? "s" : ""}</span>
+              </div>
+
+              {visible.length === 0 ? (
+                <div className="g-empty">
+                  <div className="g-empty-ico">{Ic.inbox("#94a3b8")}</div>
+                  <h4>Aucune facture</h4>
+                  <p>Cliquez sur "Nouvelle facture" pour commencer.</p>
+                </div>
+              ) : (
+                <>
+                  <div className="g-table-wrap">
+                    <table className="g-table">
+                      <thead>
+                        <tr>
+                          <th>N° Facture</th>
+                          <th>Client</th>
+                          <th>Projet</th>
+                          <th>Date</th>
+                          <th style={{ textAlign: "right" }}>Total HT</th>
+                          <th style={{ textAlign: "right" }}>TVA</th>
+                          <th style={{ textAlign: "right" }}>Total TTC</th>
+                          <th style={{ width: 110 }}>Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {current.map(f => (
+                          <tr key={f.id} className="g-fact-list-row">
+                            <td><span className="b b-indigo">{Ic.invoice("#4338ca")} {f.numero_facture}</span></td>
+                            <td><div className="g-client-name">{f.client_nom}</div></td>
+                            <td><span style={{ fontSize: "0.78rem", color: "#64748b" }}>{f.devis_projet || "—"}</span></td>
+                            <td>{f.date_facture ? new Date(f.date_facture).toLocaleDateString("fr-MA", { day: "2-digit", month: "short", year: "numeric" }) : "—"}</td>
+                            <td style={{ textAlign: "right", fontWeight: 600, color: "#334155", fontSize: "0.82rem" }}>{(f.total_ht||0).toLocaleString("fr-MA")} MAD</td>
+                            <td style={{ textAlign: "right", color: "#94a3b8", fontSize: "0.78rem" }}>{f.tva||20}%</td>
+                            <td style={{ textAlign: "right" }}>
+                              <span style={{ fontWeight: 800, color: "#059669", fontSize: "0.88rem" }}>{(f.total_ttc||0).toLocaleString("fr-MA")} MAD</span>
+                            </td>
+                            <td>
+                              <div style={{ display: "flex", gap: 4 }}>
+                                <button className="g-btn g-btn-blue"  onClick={() => openPreview(f)}>{Ic.eye("#4f7cff")}</button>
+                                <button className="g-btn g-btn-red"   onClick={() => deleteFact(f.id)}>{Ic.trash("#b91c1c")}</button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <Pagination total={visible.length} page={page} perPage={PER_PAGE} onChange={setPage} />
+                </>
+              )}
+            </div>
+          </>
+        )}
+
+        {/* ─── CRÉATION ─── */}
+        {tab === "create" && (
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 300px", gap: 18, alignItems: "start" }}>
+
+            {/* Formulaire principal */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+
+              {/* Infos générales */}
+              <div className="g-fact-form">
+                <div className="g-fact-form-header">
+                  <div style={{ width: 28, height: 28, borderRadius: 8, background: "rgba(42,127,165,0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#2a7fa5" }}>{Ic.invoice("#2a7fa5")}</div>
+                  <span style={{ fontSize: "0.82rem", fontWeight: 700, color: "#1e2940" }}>Informations générales</span>
+                </div>
+                <div className="g-fact-form-body">
+                  {/* Numéro + Date */}
+                  <div className="g-fact-grid2" style={{ marginBottom: 14 }}>
+                    <div>
+                      <label className="g-fact-label">N° Facture *</label>
+                      <input className="g-fact-input" value={form.numero_facture} onChange={e => setForm(p => ({...p, numero_facture: e.target.value}))} placeholder="FA2026/03" />
+                    </div>
+                    <div>
+                      <label className="g-fact-label">Date de facturation</label>
+                      <input className="g-fact-input" type="date" value={form.date_facture} onChange={e => setForm(p => ({...p, date_facture: e.target.value}))} />
+                    </div>
+                  </div>
+                  {/* Prestataire */}
+                  <div style={{ background: "#f0f7ff", borderRadius: 9, padding: "12px 14px", marginBottom: 14, border: "1px solid #dbeafe" }}>
+                    <div style={{ fontSize: "0.62rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "#1d4ed8", marginBottom: 10 }}>Prestataire</div>
+                    <div className="g-fact-grid2" style={{ marginBottom: 10 }}>
+                      <div>
+                        <label className="g-fact-label">Nom prestataire</label>
+                        <input className="g-fact-input" value={form.prestataire_nom} onChange={e => setForm(p => ({...p, prestataire_nom: e.target.value}))} placeholder="ARCH ENGY TECH" />
+                      </div>
+                      <div>
+                        <label className="g-fact-label">ICE</label>
+                        <input className="g-fact-input" value={form.prestataire_ice} onChange={e => setForm(p => ({...p, prestataire_ice: e.target.value}))} placeholder="003908151000015" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="g-fact-label">Adresse</label>
+                      <input className="g-fact-input" value={form.prestataire_adresse} onChange={e => setForm(p => ({...p, prestataire_adresse: e.target.value}))} placeholder="ROUIDATE 3 N°121 1 MARRAKECH" />
+                    </div>
+                  </div>
+                  {/* Client + Projet */}
+                  <div className="g-fact-grid2">
+                    <div>
+                      <label className="g-fact-label">Nom du client *</label>
+                      <input className="g-fact-input" value={form.client_nom} onChange={e => setForm(p => ({...p, client_nom: e.target.value}))} placeholder="Nom complet ou société" />
+                    </div>
+                    <div>
+                      <label className="g-fact-label">Devis / Projet</label>
+                      <input className="g-fact-input" value={form.devis_projet} onChange={e => setForm(p => ({...p, devis_projet: e.target.value}))} placeholder="REAMENAGEMENT DU RIAD BLEU…" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Lignes de prestation */}
+              <div className="g-fact-form">
+                <div className="g-fact-form-header">
+                  <div style={{ width: 28, height: 28, borderRadius: 8, background: "rgba(42,127,165,0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#2a7fa5" }}>{Ic.stat_list("#2a7fa5")}</div>
+                  <span style={{ fontSize: "0.82rem", fontWeight: 700, color: "#1e2940" }}>Prestations / Articles</span>
+                </div>
+                <div className="g-fact-form-body" style={{ paddingTop: 14 }}>
+                  <div style={{ border: "1px solid #edf0f7", borderRadius: 10, overflow: "hidden", marginBottom: 14 }}>
+                    <table className="g-items-table">
+                      <thead>
+                        <tr>
+                          <th style={{ width: "38%" }}>Intitulé</th>
+                          <th style={{ width: "9%" }}>Unité</th>
+                          <th style={{ width: "12%" }}>Qté</th>
+                          <th style={{ width: "18%" }}>Prix unitaire (MAD)</th>
+                          <th style={{ width: "16%" }}>Total HT</th>
+                          <th style={{ width: "7%" }}></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {items.map((item, i) => (
+                          <tr key={i}>
+                            <td><input className="g-item-input" value={item.intitule} onChange={e => updateItem(i, "intitule", e.target.value)} placeholder="Description de la prestation…" /></td>
+                            <td><input className="g-item-input" value={item.unite} onChange={e => updateItem(i, "unite", e.target.value)} placeholder="F" style={{ textAlign: "center" }} /></td>
+                            <td><input className="g-item-input" value={item.quantite} onChange={e => updateItem(i, "quantite", e.target.value)} placeholder="50%" style={{ textAlign: "center" }}  /></td>
+                            <td><input className="g-item-input" type="number" min="0" value={item.prix_unitaire} onChange={e => updateItem(i, "prix_unitaire", e.target.value)} style={{ textAlign: "right" }} /></td>
+                            <td><div className="g-item-total" style={{ textAlign: "right" }}>{fmt(item.total)}</div></td>
+                            <td>
+                              {items.length > 1 && (
+                                <button onClick={() => removeItem(i)} style={{ background: "none", border: "none", cursor: "pointer", color: "#ef4444", padding: "4px", display: "flex", alignItems: "center", borderRadius: 6 }}>
+                                  {Ic.trash("#ef4444")}
+                                </button>
+                              )}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <button className="g-btn-add-item" onClick={addItem}>
+                    {Ic.plus("#64748b")} Ajouter une ligne
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Sidebar droite — Totaux + TVA + Sauvegarder */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 14, position: "sticky", top: 0 }}>
+              <div className="g-fact-form">
+                <div className="g-fact-form-header">
+                  <div style={{ width: 28, height: 28, borderRadius: 8, background: "rgba(5,150,105,0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#059669" }}>{Ic.euro("#059669")}</div>
+                  <span style={{ fontSize: "0.82rem", fontWeight: 700, color: "#1e2940" }}>Récapitulatif</span>
+                </div>
+                <div className="g-fact-form-body" style={{ paddingTop: 16 }}>
+                  <div style={{ marginBottom: 16 }}>
+                    <label className="g-fact-label">Taux TVA (%)</label>
+                    <input className="g-fact-input" type="number" min="0" max="100" value={form.tva} onChange={e => setForm(p => ({...p, tva: e.target.value}))} />
+                  </div>
+                  <div className="g-fact-totals">
+                    <div className="g-fact-total-row">
+                      <span>Total HT</span>
+                      <span style={{ fontWeight: 600, color: "#334155" }}>{fmt(totalHT)} MAD</span>
+                    </div>
+                    <div className="g-fact-total-row">
+                      <span>TVA ({form.tva}%)</span>
+                      <span style={{ fontWeight: 600, color: "#334155" }}>{fmt(tvaAmt)} MAD</span>
+                    </div>
+                    <div className="g-fact-total-row ttc">
+                      <span>Total TTC</span>
+                      <span>{fmt(totalTTC)} MAD</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                className="g-btn-print"
+                style={{ width: "100%", justifyContent: "center", opacity: saving ? 0.7 : 1, cursor: saving ? "not-allowed" : "pointer" }}
+                onClick={saveFacture}
+                disabled={saving}
+              >
+                {Ic.save("#fff")} {saving ? "Enregistrement…" : "Enregistrer la facture"}
+              </button>
+
+              <div style={{ fontSize: "0.68rem", color: "#94a3b8", textAlign: "center", lineHeight: 1.5 }}>
+                La facture sera sauvegardée dans<br />votre base de données Supabase.
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Print preview */}
+      {previewFact && (
+        <PrintPreview
+          facture={previewFact}
+          items={previewItems}
+          onClose={() => { setPreviewFact(null); setPreviewItems([]); }}
+        />
+      )}
+    </>
+  );
+}
+
 /* ══════════════════════════════════════════════════════════════
    MAIN DASHBOARD
 ══════════════════════════════════════════════════════════════ */
@@ -671,17 +1359,21 @@ export default function AdminDashboard() {
   const [demandes,      setDemandes]      = useState([]);
   const [candidatures,  setCandidatures]  = useState([]);
   const [activeKey,     setActiveKey]     = useState(null);
-  const [activeSection, setActiveSection] = useState("devis"); // "devis" | "rh"
+  const [activeSection, setActiveSection] = useState("devis"); // "devis" | "rh" | "factures"
   const [search,        setSearch]        = useState("");
   const [filterStatut,  setFilterStatut]  = useState("all");
   const [editingId,     setEditingId]     = useState(null);
   const [editData,      setEditData]      = useState({});
   const [page,          setPage]          = useState(1);
   // Sections ouvertes dans la sidebar — les 2 ouvertes par défaut
-  const [openSections,  setOpenSections]  = useState({ devis: true, rh: true });
+  const [openSections,  setOpenSections]  = useState({ devis: true, rh: true, factures: true });
 
   useEffect(() => { fetchDemandes(); fetchCandidatures(); }, []);
   useEffect(() => { setPage(1); }, [activeKey, search, filterStatut, activeSection]);
+  const [factures, setFactures] = useState([]);
+  useEffect(() => {
+    supabase.from("factures").select("*").then(({ data }) => data && setFactures(data));
+  }, [activeSection]);
 
   async function fetchDemandes() {
     const { data, error } = await supabase
@@ -852,6 +1544,43 @@ export default function AdminDashboard() {
           )}
         </div>
 
+        {/* ── Section FACTURES ── */}
+        <div className="g-section">
+          <div className="g-section-header" onClick={() => toggleSection("factures")}>
+            <div className="g-section-header-left">
+              <div className="g-section-orb" style={{ background: "rgba(5,150,105,0.12)" }}>
+                {Ic.invoice("#059669")}
+              </div>
+              <span className="g-section-title">Facturation</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
+              <span className="g-section-count">{factures.length}</span>
+              <span className="g-section-chevron">{openSections.factures ? Ic.chevUp() : Ic.chevDown()}</span>
+            </div>
+          </div>
+          {openSections.factures && (
+            <div className="g-section-body">
+              <button
+                className={`g-nav-item${activeSection === "factures" ? " on" : ""}`}
+                onClick={() => { setActiveSection("factures"); setActiveKey(null); }}
+              >
+                <span className="g-nav-dot" style={{
+                  background: activeSection === "factures" ? "rgba(5,150,105,0.18)" : "rgba(255,255,255,0.04)",
+                  color: activeSection === "factures" ? "#059669" : "rgba(255,255,255,0.3)",
+                }}>
+                  {Ic.invoice(activeSection === "factures" ? "#059669" : "rgba(255,255,255,0.3)")}
+                </span>
+                <span className="g-nav-txt">Toutes les factures</span>
+                {factures.length > 0 && (
+                  <span className="g-nav-pill" style={activeSection === "factures" ? { background: "rgba(5,150,105,0.2)", color: "#059669" } : {}}>
+                    {factures.length}
+                  </span>
+                )}
+              </button>
+            </div>
+          )}
+        </div>
+
         {/* Logout */}
         <div style={{ flex: 1 }} />
         <div className="g-logout-wrap">
@@ -890,6 +1619,9 @@ export default function AdminDashboard() {
             onRefresh={fetchCandidatures}
           />
         )}
+
+        {/* ── Factures ── */}
+        {activeSection === "factures" && <FacturesView />}
 
         {/* ── Devis ── */}
         {activeSection === "devis" && !activeKey && (
