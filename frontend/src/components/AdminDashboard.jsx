@@ -306,8 +306,13 @@ function injectAll() {
     .g-print-close:hover { background: #f6f8fc; color: #1e2940; }
     .g-print-btn { position: fixed; top: 18px; right: 70px; background: linear-gradient(90deg,#1b2f6e,#2a7fa5); border: none; padding: 8px 18px; border-radius: 10px; cursor: pointer; color: #fff; font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; gap: 7px; box-shadow: 0 2px 8px rgba(42,127,165,0.35); transition: all 0.13s; z-index: 10; }
     .g-print-btn:hover { box-shadow: 0 4px 14px rgba(42,127,165,0.5); transform: translateY(-1px); }
-    @media print { body > *:not(.engy-print-root) { display: none !important; } .engy-print-controls { display: none !important; } }
-  `;
+@media print {
+  body * { visibility: hidden !important; }
+  .engy-print-doc, .engy-print-doc * { visibility: visible !important; }
+  .engy-print-doc { position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; }
+  .engy-print-controls { display: none !important; }
+  @page { margin: 0; size: A4; }
+}  `;
   document.head.appendChild(st);
 }
 
@@ -783,30 +788,29 @@ function PrintPreview({ facture, items, onClose }) {
   return (
     <>
       {/* ── Print CSS: hide controls, show only doc ── */}
-      <style>{`
-        @media print {
-          body > * { display: none !important; }
-          .engy-print-root { display: block !important; position: fixed !important;
-            inset: 0 !important; z-index: 9999 !important; background: white !important; }
-          .engy-print-controls { display: none !important; }
-          .engy-print-doc { box-shadow: none !important; margin: 0 !important; border-radius: 0 !important; width: 100% !important; min-height: 100vh !important; }
-          @page { margin: 0; size: A4; }
-        }
-      `}</style>
+  
 
       <div className="engy-print-root g-print-overlay">
         {/* ── Controls (hidden on print) ── */}
         <div className="engy-print-controls"
           style={{ position:"fixed", top:16, right:16, display:"flex", gap:8, zIndex:10 }}>
-          <button className="g-print-btn" onClick={() => window.print()}>
-            {Ic.printer("#fff")} Imprimer / PDF
-          </button>
+         <button className="g-print-btn" onClick={() => {
+  // Construire le nom du fichier
+  const num    = (facture.numero_facture || "").replace(/\//g, "");
+  const projet = facture.devis_projet ? " " + facture.devis_projet : "";
+  document.title = `${num}${projet}`;
+  window.print();
+  // Restaurer le titre après impression
+  setTimeout(() => { document.title = "Engytech Admin"; }, 2000);
+}}>
+  {Ic.printer("#fff")} Imprimer / PDF
+</button>
           <button className="g-print-close" onClick={onClose}>{Ic.close()}</button>
         </div>
 
         {/* ════════════ DOCUMENT A4 ════════════ */}
         <div className="engy-print-doc"
-          style={{ background:"#fff", width:794, minHeight:1019,
+          style={{ background:"#f8fafc", width:794, minHeight:1019,
             padding:"44px 56px 100px", fontFamily:F, color:"#000",
             position:"relative", boxSizing:"border-box",
             boxShadow:"0 20px 60px rgba(0,0,0,0.25)", overflow:"hidden" }}>
