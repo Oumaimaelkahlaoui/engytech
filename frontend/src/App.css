@@ -481,7 +481,7 @@ input, textarea, select {
 .line--1 { animation: slideInLeft 1.1s var(--ease-out) 0.3s both; }
 .line--2 {
   font-style: italic;
-  color: var(--primary-dark);
+  color:var(--teal);
   animation: slideInLeft 1.1s var(--ease-out) 0.5s both;
 }
 
@@ -1238,3 +1238,4 @@ cite span   { display: block; font-size: 0.75rem;  color: var(--dust); text-alig
 @media (max-width: 360px) {
   .devis-grid-light { padding: 0 1rem; }
 }
+

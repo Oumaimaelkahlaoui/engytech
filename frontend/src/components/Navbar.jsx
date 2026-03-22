@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+const navItems = [
+  { label: "Accueil",  path: "/" },
+  { label: "À propos", path: "/about" },
+  { label: "Services", path: "/services" },
+  { label: "Contact",  path: "/contact" }, // scroll anchor si Contact reste dans la page
+];
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -14,17 +21,14 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar navbar--visible ${scrolled ? "navbar--scrolled" : ""}`}>
-      
       <div className="navbar__logo">
-        <img src="/unnamed.png" className="logo-img" />
+        <img src="/unnamed.png" className="logo-img" alt="Logo" />
       </div>
 
       <ul className={`navbar__links ${menuOpen ? "navbar__links--open" : ""}`}>
-        {["Accueil", "À propos", "Services", "Projets", "Contact"].map((item) => (
-          <li key={item} onClick={() => setMenuOpen(false)}>
-            <a href={`#${item.toLowerCase().replace(" ", "").replace("à", "a")}`}>
-              <span>{item}</span>
-            </a>
+        {navItems.map(({ label, path }) => (
+          <li key={label} onClick={() => setMenuOpen(false)}>
+            <Link to={path}><span>{label}</span></Link>
           </li>
         ))}
       </ul>
@@ -37,11 +41,8 @@ export default function Navbar() {
         className={`burger ${menuOpen ? "burger--open" : ""}`}
         onClick={() => setMenuOpen(!menuOpen)}
       >
-        <span />
-        <span />
-        <span />
+        <span /><span /><span />
       </button>
-
     </nav>
   );
 }

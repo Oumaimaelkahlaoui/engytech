@@ -777,13 +777,21 @@ function PrintPreview({ facture, items, onClose }) {
   );
 
   /* ── Watermark logo (background) ── */
-  const WatermarkLogo = () => (
-    <img src="/unnamed1.png" alt=""
-      style={{ position:"absolute", top:"83%", left:"83%",
-        transform:"translate(-100%,-100%) rotate(-20deg)",
-        opacity:0.04, pointerEvents:"none", zIndex:0,
-        width: 600, objectFit:"contain" }} />
-  );
+const WatermarkLogo = () => (
+  <img src="/unnamed1.jpg" alt=""
+    style={{
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%) rotate(-20deg)",
+      opacity: 0.06,
+      pointerEvents: "none",
+      zIndex: 0,
+      width: "110%",
+      height: "110%",
+      objectFit: "contain",
+    }} />
+);
 
   return (
     <>
@@ -914,7 +922,7 @@ function PrintPreview({ facture, items, onClose }) {
           {/* ── 8. PIED DE PAGE (absolu en bas) ── */}
           <div style={{ position:"absolute", bottom:0, left:-29, right:-29,
             borderTop:"1.5px solid #1b3a6b", padding:"8px 28px 0",
-            textAlign:"center", fontSize:8.5, color:"#334155",
+            textAlign:"center", fontSize:10, color:"#334155",
             lineHeight:1.95, background:"#fff", fontFamily:F, zIndex:1 }}>
             <div style={{ fontWeight:"bold", fontSize:9 }}>
               {prestataire_nom} SARL.AU | Siège Social : ROUIDATE 3 N°121 – Marrakech (CP : 40000) – Maroc
@@ -1354,6 +1362,113 @@ const fmt = (n) =>
   );
 }
 
+function PrintPreviewAttestation({ data, onClose }) {
+  const F = "Arial, Helvetica, sans-serif";
+
+  const dateStr = data.date
+    ? new Date(data.date + "T00:00:00").toLocaleDateString("fr-FR")
+    : "—";
+
+  const EngyLogo = () => (
+    <img src="/unnamed.png" alt="Engytech Logo"
+      style={{
+        height: 120,
+        display: "block",
+        margin: "0 auto"
+      }}
+    />
+  );
+
+  return (
+    <>
+      {/* Buttons */}
+      <div style={{ position:"fixed", top:16, right:16, display:"flex", gap:8 }}>
+        <button onClick={() => window.print()}>🖨️ Imprimer</button>
+        <button onClick={onClose}>❌</button>
+      </div>
+
+      {/* Document */}
+      <div style={{
+        width: 794,
+        minHeight: 1123,
+        margin: "auto",
+        background: "#fff",
+        padding: "40px 60px",
+        fontFamily: F,
+        lineHeight: 1.6,
+        position: "relative"
+      }}>
+
+        {/* Logo */}
+        <EngyLogo />
+
+        {/* Header */}
+        <div style={{ textAlign: "center", marginTop: 10 }}>
+          <div style={{ fontSize: 12 }}>Bureau d’Etudes Technique</div>
+          <div style={{ fontSize: 12 }}>TCE | BIM | OPC</div>
+
+          <h2 style={{
+            marginTop: 20,
+            textDecoration: "underline",
+            letterSpacing: 1
+          }}>
+            ATTESTATION DE STABILITÉ
+          </h2>
+        </div>
+
+        {/* Objet */}
+        <div style={{ marginTop: 30 }}>
+          <strong>OBJET :</strong> {data.objet}
+        </div>
+
+        {/* Adresse */}
+        <div style={{ marginTop: 10 }}>
+          <strong>Sis à :</strong> {data.adresse}
+        </div>
+
+        <div style={{ marginTop: 5 }}>
+          <strong>T.F :</strong> {data.tf}
+        </div>
+
+        {/* Date */}
+        <div style={{ textAlign: "right", marginTop: 20 }}>
+          Marrakech, le {dateStr}
+        </div>
+
+        {/* Texte */}
+        <div style={{ marginTop: 25, textAlign: "justify" }}>
+          {data.contenu}
+        </div>
+
+        {/* Signature */}
+        <div style={{ marginTop: 60, textAlign: "center" }}>
+          <div>Fait à Marrakech, {dateStr}</div>
+          <div style={{ marginTop: 20 }}>
+            Etablie et signée par {data.signataire}
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div style={{
+          position: "absolute",
+          bottom: 20,
+          left: 40,
+          right: 40,
+          textAlign: "center",
+          fontSize: 10,
+          lineHeight: 1.6
+        }}>
+          ARCH ENGY TECH S.A.R.L A.U | ROUIDATE 3 N°121 – Marrakech (CP : 40000)
+          <br />
+          Capital : 100 000 Dhs – RC : 177925 – IF : 71876394 – ICE : 003908151000015
+          <br />
+          contact@archengytech.ma – GSM : 06 62 25 78 79
+        </div>
+      </div>
+    </>
+  );
+}
+
 /* ══════════════════════════════════════════════════════════════
    MAIN DASHBOARD
 ══════════════════════════════════════════════════════════════ */
@@ -1585,6 +1700,44 @@ export default function AdminDashboard() {
           )}
         </div>
 
+        {/* ── Section Attestation ── */}
+
+         <div className="g-section">
+          <div className="g-section-header" onClick={() => toggleSection("Attestation")}>
+            <div className="g-section-header-left">
+              <div className="g-section-orb" style={{ background: "rgba(5,150,105,0.12)" }}>
+                {Ic.invoice("#059669")}
+              </div>
+              <span className="g-section-title">Attestation</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
+              <span className="g-section-count">{factures.length}</span>
+              <span className="g-section-chevron">{openSections.Attestation ? Ic.chevUp() : Ic.chevDown()}</span>
+            </div>
+          </div>
+          {openSections.Attestation && (
+            <div className="g-section-body">
+              <button
+                className={`g-nav-item${activeSection === "Attestation" ? " on" : ""}`}
+                onClick={() => { setActiveSection("Attestation"); setActiveKey(null); }}
+              >
+                <span className="g-nav-dot" style={{
+                  background: activeSection === "Attestation" ? "rgba(5,150,105,0.18)" : "rgba(255,255,255,0.04)",
+                  color: activeSection === "Attestation" ? "#059669" : "rgba(255,255,255,0.3)",
+                }}>
+                  {Ic.invoice(activeSection === "Attestation" ? "#059669" : "rgba(255,255,255,0.3)")}
+                </span>
+                <span className="g-nav-txt">Toutes les Attestation</span>
+                {Attestation.length > 0 && (
+                  <span className="g-nav-pill" style={activeSection === "Attestation" ? { background: "rgba(5,150,105,0.2)", color: "#059669" } : {}}>
+                    {Attestation.length}
+                  </span>
+                )}
+              </button>
+            </div>
+          )}
+        </div>
+
         {/* Logout */}
         <div style={{ flex: 1 }} />
         <div className="g-logout-wrap">
@@ -1613,6 +1766,8 @@ export default function AdminDashboard() {
         </div>
       </aside>
 
+      
+
       {/* ════════════════ MAIN ════════════════ */}
       <div className="g-main">
 
@@ -1626,7 +1781,8 @@ export default function AdminDashboard() {
 
         {/* ── Factures ── */}
         {activeSection === "factures" && <FacturesView />}
-
+        {/* ── Attestation ── */}
+        {activeSection === "Attestation" && <PrintPreviewAttestation />}
         {/* ── Devis ── */}
         {activeSection === "devis" && !activeKey && (
           <div className="g-welcome">

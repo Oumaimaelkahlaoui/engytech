@@ -12,7 +12,9 @@ import EfficaciteEnergetique from "./pages/devis/EfficaciteEnergetique"
 import SuiviContrôle from "./pages/devis/SuiviContrôle"
 import Cps from "./pages/devis/Cps"
 import Carriere from "./pages/carriere";
-
+import About from "./pages/About";
+import Services from"./pages/Services";
+import Contact from"./pages/Contact";
 
 
 export default function App() {
@@ -33,6 +35,10 @@ export default function App() {
       <Route path="/devis/cps-metres-estimation" element={<Cps />} />
 
       <Route path="/Carriere" element={<Carriere />} />
+      <Route path="/about" element={<About/>}/>
+      <Route path="/services" element={<Services/>}/>
+      <Route path="/contact" element={<Contact/>}/>
+
 
 
 
