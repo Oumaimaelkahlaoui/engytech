@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import DevisPage from "./pages/DevisPage";
-import EtudeStructure from "./pages/EtudeStructure";
+import EtudeStrucrture from "./pages/EtudeStrucrture";
 import AdminPage from "./pages/AdminPage";
 import EtudeVRD from "./pages/devis/EtudeVRD";
 import OPC from "./pages/devis/OPC";
-import NoticeIncendie from "./pages/devis/NoticeIncendie";
+import Noticencendie from "./pages/devis/Noticencendie";
 import NoteCalculs from "./pages/devis/NoteCalculs";
 import ExpertiseTechnique from "./pages/devis/ExpertiseTechnique";
 import EfficaciteEnergetique from "./pages/devis/EfficaciteEnergetique";
@@ -26,10 +26,10 @@ export default function App() {
         <Route path="/devis" element={<DevisPage />} />
         <Route path="/admin" element={<AdminPage />} />
 
-        <Route path="/devis/etude-structure" element={<EtudeStructure />} />
+      <Route path="/devis/etude-structure" element={<EtudeStrucrture/>}/>
         <Route path="/devis/etude-vrd" element={<EtudeVRD />} />
         <Route path="/devis/opc" element={<OPC />} />
-        <Route path="/devis/notice-securite-incendie" element={<NoticeIncendie />} />
+        <Route path="/devis/notice-securite-incendie" element={<Noticencendie />} />
         <Route path="/devis/note-calculs" element={<NoteCalculs />} />
         <Route path="/devis/expertise-technique" element={<ExpertiseTechnique />} />
         <Route path="/devis/efficacite-energetique" element={<EfficaciteEnergetique />} />
