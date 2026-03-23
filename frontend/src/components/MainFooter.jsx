@@ -15,7 +15,7 @@ export default function MainFooter() {
   {[
     { label: "Accueil", path: "/" },
     { label: "Services", path: "/services" },
-    { label: "Projets", path: "/projets" },
+    { label: "À propos", path: "/about" },
     { label: "Contact", path: "/contact" },
     { label: "Carriere", path: "/carriere" },
   ].map((item) => (
