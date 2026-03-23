@@ -1,48 +1,46 @@
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import DevisPage from "./pages/DevisPage";
-import EtudeStructure from "./pages/EtudeStrucrture";
+import EtudeStructure from "./pages/EtudeStructure";
 import AdminPage from "./pages/AdminPage";
 import EtudeVRD from "./pages/devis/EtudeVRD";
 import OPC from "./pages/devis/OPC";
-import NoticeIncendie from "./pages/devis/Noticencendie"
-import NoteCalculs from "./pages/devis/NoteCalculs"
-import ExpertiseTechnique from "./pages/devis/ExpertiseTechnique"
-import EfficaciteEnergetique from "./pages/devis/EfficaciteEnergetique"
-import SuiviContrôle from "./pages/devis/SuiviContrôle"
-import Cps from "./pages/devis/Cps"
-import Carriere from "./pages/carriere";
+import NoticeIncendie from "./pages/devis/NoticeIncendie";
+import NoteCalculs from "./pages/devis/NoteCalculs";
+import ExpertiseTechnique from "./pages/devis/ExpertiseTechnique";
+import EfficaciteEnergetique from "./pages/devis/EfficaciteEnergetique";
+import SuiviControle from "./pages/devis/SuiviControle";
+import Cps from "./pages/devis/Cps";
+import Carriere from "./pages/Carriere";
 import About from "./pages/About";
-import Services from"./pages/Services";
-import Contact from"./pages/Contact";
+import Services from "./pages/Services";
+import Contact from "./pages/Contact";
 import ScrollToTop from "./components/ScrollToTop";
-
 
 export default function App() {
   return (
-  <>
+    <>
       <ScrollToTop />
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/devis" element={<DevisPage />} />
-       <Route path="/admin" element={<AdminPage/>}/>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/devis" element={<DevisPage />} />
+        <Route path="/admin" element={<AdminPage />} />
 
-      <Route path="/devis/etude-structure" element={<EtudeStructure/>}/>
-       <Route path="/devis/etude-vrd" element={<EtudeVRD />} /> 
-      <Route path="/devis/opc" element={<OPC />} />
-      <Route path="/devis/notice-securite-incendie" element={<NoticeIncendie />} />
-      <Route path="/devis/note-calculs" element={<NoteCalculs />} />
-      <Route path="/devis/expertise-technique" element={<ExpertiseTechnique />} />
-      <Route path="/devis/efficacite-energetique" element={<EfficaciteEnergetique />} />
-      <Route path="/devis/suivi-controle-technique" element={<SuiviContrôle />} />
-      <Route path="/devis/cps-metres-estimation" element={<Cps />} />
+        <Route path="/devis/etude-structure" element={<EtudeStructure />} />
+        <Route path="/devis/etude-vrd" element={<EtudeVRD />} />
+        <Route path="/devis/opc" element={<OPC />} />
+        <Route path="/devis/notice-securite-incendie" element={<NoticeIncendie />} />
+        <Route path="/devis/note-calculs" element={<NoteCalculs />} />
+        <Route path="/devis/expertise-technique" element={<ExpertiseTechnique />} />
+        <Route path="/devis/efficacite-energetique" element={<EfficaciteEnergetique />} />
+        <Route path="/devis/suivi-controle-technique" element={<SuiviControle />} />
+        <Route path="/devis/cps-metres-estimation" element={<Cps />} />
 
-      <Route path="/Carriere" element={<Carriere />} />
-      <Route path="/about" element={<About/>}/>
-      <Route path="/services" element={<Services/>}/>
-      <Route path="/contact" element={<Contact/>}/>
-
-    </Routes>
-  </>
+        <Route path="/carriere" element={<Carriere />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </>
   );
 }
