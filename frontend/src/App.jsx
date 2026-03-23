@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import DevisPage from "./pages/DevisPage";
-import EtudeStrucrture from "./pages/EtudeStrucrture";
 import AdminPage from "./pages/AdminPage";
 import EtudeVRD from "./pages/devis/EtudeVRD";
 import OPC from "./pages/devis/OPC";
+import ClientForm from "./pages/devis/ClientForm"
 import Noticencendie from "./pages/devis/Noticencendie";
 import NoteCalculs from "./pages/devis/NoteCalculs";
 import ExpertiseTechnique from "./pages/devis/ExpertiseTechnique";
@@ -25,8 +25,8 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/devis" element={<DevisPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/devis/etude-structure" element={<ClientForm />} />
 
-      <Route path="/devis/etude-structure" element={<EtudeStrucrture/>}/>
         <Route path="/devis/etude-vrd" element={<EtudeVRD />} />
         <Route path="/devis/opc" element={<OPC />} />
         <Route path="/devis/notice-securite-incendie" element={<Noticencendie />} />
