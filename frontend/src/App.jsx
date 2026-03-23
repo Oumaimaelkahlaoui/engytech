@@ -16,7 +16,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import ScrollToTop from "./components/ScrollToTop";
-
+// Force rebuild Vercel - aucun EtudeStructure
 export default function App() {
   return (
     <>
