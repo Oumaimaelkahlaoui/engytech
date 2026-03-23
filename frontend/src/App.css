@@ -481,7 +481,7 @@ input, textarea, select {
 .line--1 { animation: slideInLeft 1.1s var(--ease-out) 0.3s both; }
 .line--2 {
   font-style: italic;
-  color:var(--teal);
+  color: #fff;;
   animation: slideInLeft 1.1s var(--ease-out) 0.5s both;
 }
 

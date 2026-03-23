@@ -15,10 +15,13 @@ import Carriere from "./pages/carriere";
 import About from "./pages/About";
 import Services from"./pages/Services";
 import Contact from"./pages/Contact";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 export default function App() {
   return (
+  <>
+      <ScrollToTop />
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/devis" element={<DevisPage />} />
@@ -39,9 +42,7 @@ export default function App() {
       <Route path="/services" element={<Services/>}/>
       <Route path="/contact" element={<Contact/>}/>
 
-
-
-
     </Routes>
+  </>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/MainFooter";
+import FloatingMenu from "../components/Floatingmenu";
 
 const css = `
   .about-page { overflow-x: hidden; }
@@ -429,12 +430,12 @@ const IconHandshake = () => (
 /* ── DATA ─────────────────────────────────────── */
 
 const expertises = [
-  { num: "01", title: "Structures béton armé & métal",       desc: "Conception, calcul et dimensionnement pour tous types de bâtiments et ouvrages d'art.",       img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&q=75" },
-  { num: "02", title: "VRD & Aménagement",                   desc: "Voirie, réseaux divers, drainage, assainissement — études complètes du sol à la surface.",      img: "https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=500&q=75" },
-  { num: "03", title: "Optimisation énergétique",            desc: "Audit thermique, solutions passives et actives pour des bâtiments performants et durables.",    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&q=75" },
-  { num: "04", title: "Contrôle & suivi de travaux",         desc: "Missions OPC, maîtrise d'œuvre et assistance à maîtrise d'ouvrage sur chantier.",              img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=500&q=75" },
-  { num: "05", title: "Modélisation BIM",                    desc: "Maquettes numériques 3D, coordination pluridisciplinaire et clash-detection intégrée.",         img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=75" },
-  { num: "06", title: "Éco-conception & durabilité",         desc: "HQE, matériaux biosourcés et bilan carbone — l'environnement comme paramètre de conception.",  img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=75" },
+  { num: "01", title: "Structures béton armé & métal",       desc: "Conception, calcul et dimensionnement pour tous types de bâtiments et ouvrages d'art.",       img: "/image1.jpg" },
+  { num: "02", title: "VRD & Aménagement",                   desc: "Voirie, réseaux divers, drainage, assainissement — études complètes du sol à la surface.",      img: "/image2.jpg" },
+  { num: "03", title: "Optimisation énergétique",            desc: "Audit thermique, solutions passives et actives pour des bâtiments performants et durables.",    img: "/image3.jpg" },
+  { num: "04", title: "Contrôle & suivi de travaux",         desc: "Missions OPC, maîtrise d'œuvre et assistance à maîtrise d'ouvrage sur chantier.",              img: "/image4.jpg" },
+  { num: "05", title: "Modélisation BIM",                    desc: "Maquettes numériques 3D, coordination pluridisciplinaire et clash-detection intégrée.",         img: "/image5.jpg" },
+  { num: "06", title: "Éco-conception & durabilité",         desc: "HQE, matériaux biosourcés et bilan carbone — l'environnement comme paramètre de conception.",  img: "/image6.jpg" },
 ];
 
 const innovItems = [
@@ -631,7 +632,7 @@ export default function About() {
             </div>
           </div>
         </section>
-
+ <FloatingMenu />
         <Footer />
       </div>
     </>

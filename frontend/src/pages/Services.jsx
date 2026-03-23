@@ -2,6 +2,7 @@ import { useEffect,useRef  } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/MainFooter";
+import FloatingMenu from "../components/Floatingmenu";
 
 const css = `
   .sv { overflow-x: hidden; }
@@ -469,25 +470,25 @@ const domains = [
     tag:"Études techniques",
     title:"Conception & calcul",
     desc:"Structures béton armé, charpentes métalliques, fondations spéciales — nous assurons la fiabilité technique de vos ouvrages du dimensionnement jusqu'aux plans d'exécution.",
-    img:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=75",
+    img:"/1.jpg",
   },
   {
     tag:"Suivi de chantier",
     title:"Pilotage & contrôle",
     desc:"Maîtrise d'œuvre, OPC et assistance à maîtrise d'ouvrage. Nous coordonnons les intervenants et garantissons la conformité des travaux à chaque étape.",
-    img:"https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=75",
+    img:"/2.jpg",
   },
   {
     tag:"Performance",
     title:"Énergie & durabilité",
     desc:"Audits thermiques, simulations STD, démarches HQE et bilan carbone. Nous intégrons les enjeux environnementaux comme paramètre de conception, pas comme contrainte.",
-    img:"https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=75",
+    img:"/3.jpg",
   },
   {
     tag:"Numérique",
     title:"BIM & innovation",
     desc:"Maquettes numériques 3D, coordination multi-corps d'état, clash-detection et livrables IFC. Nous exploitons les outils digitaux les plus avancés du secteur.",
-    img:"https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75",
+    img:"/4.jpg",
   },
 ];
 
@@ -701,7 +702,7 @@ export default function Services() {
             </div>
           </div>
         </section>
-
+ <FloatingMenu />
         <Footer />
       </div>
     </>

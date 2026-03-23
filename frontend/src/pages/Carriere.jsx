@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback, useMemo } from 'react'
 import { supabase } from "../../../backend/supabaseClient";
 import Navbar from "../components/Navbar";
 import Footer from "../components/MainFooter";
+import FloatingMenu from "../components/Floatingmenu";
 
 /* ─── SVG ICONS ─────────────────────────── */
 const Icon = {
@@ -885,7 +886,7 @@ export default function Career() {
 
         </div>
       </div>
-
+ <FloatingMenu />
       <Footer />
     </div>
   )

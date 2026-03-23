@@ -21,9 +21,9 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar navbar--visible ${scrolled ? "navbar--scrolled" : ""}`}>
-      <div className="navbar__logo">
-        <img src="/unnamed.png" className="logo-img" alt="Logo" />
-      </div>
+    <Link to="/" className="navbar__logo">
+  <img src="/unnamed.png" className="logo-img" alt="Logo" />
+</Link>
 
       <ul className={`navbar__links ${menuOpen ? "navbar__links--open" : ""}`}>
         {navItems.map(({ label, path }) => (

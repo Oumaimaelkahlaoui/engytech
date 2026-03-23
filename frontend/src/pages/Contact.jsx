@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/MainFooter";
+import FloatingMenu from "../components/Floatingmenu";
 
 const css = `
   .ct { overflow-x: hidden; }
@@ -566,6 +567,7 @@ export default function Contact() {
           </div>
         </section>
 */}
+ <FloatingMenu />
         <Footer />
       </div>
     </>

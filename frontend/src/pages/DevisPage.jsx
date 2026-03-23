@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/MainFooter";
+import FloatingMenu from "../components/Floatingmenu";
 
 function useReveal() {
   useEffect(() => {
@@ -20,7 +21,7 @@ const DEVIS_ITEMS = [
     title: "Étude de structure",
     desc: "Béton armé ou métallique — analyse et calculs de stabilité des structures.",
     link: "/devis/etude-structure",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=85",
+    image: "/imge2.jpg",
     accent: "#1b2f6e",
     tag: "Structure",
   },
@@ -28,7 +29,7 @@ const DEVIS_ITEMS = [
     title: "Étude VRD",
     desc: "Assainissement, voirie et réseaux — conception et planification complète.",
     link: "/devis/etude-vrd",
-    image: "https://images.unsplash.com/photo-1590725121839-892b458a74fe?w=800&q=85",
+    image: "/imge3.jpg",
     accent: "#2a7fa5",
     tag: "Réseaux",
   },
@@ -36,7 +37,7 @@ const DEVIS_ITEMS = [
     title: "OPC – Pilotage & Coordination",
     desc: "Gestion des phases chantier et coordination des corps d'état.",
     link: "/devis/opc",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=85",
+    image: "/imge4.jpg",
     accent: "#1d5c7a",
     tag: "Gestion",
   },
@@ -44,7 +45,7 @@ const DEVIS_ITEMS = [
     title: "Notice sécurité incendie",
     desc: "Évaluation des risques, plans d'évacuation et conformité SSI.",
     link: "/devis/notice-securite-incendie",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85",
+    image: "/imge5.jpg",
     accent: "#c0392b",
     tag: "Sécurité",
   },
@@ -52,7 +53,7 @@ const DEVIS_ITEMS = [
     title: "Expertise & diagnostic",
     desc: "Diagnostic des ouvrages, pathologies et rapport technique détaillé.",
     link: "/devis/expertise-technique",
-    image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=85",
+    image: "/imge6.jpg",
     accent: "#1b2f6e",
     tag: "Expertise",
   },
@@ -60,7 +61,7 @@ const DEVIS_ITEMS = [
     title: "Suivi & contrôle technique",
     desc: "Contrôle qualité et suivi de chantier pour conformité et sécurité.",
     link: "/devis/suivi-controle-technique",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=85",
+    image: "/imge7.jpg",
     accent: "#2a7fa5",
     tag: "Contrôle",
   },
@@ -68,7 +69,7 @@ const DEVIS_ITEMS = [
     title: "Efficacité Énergétique",
     desc: "Optimisation énergétique des bâtiments et conseils sur la performance.",
     link: "/devis/efficacite-energetique",
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=85",
+    image: "/imge8.jpg",
     accent: "#3ab87a",
     tag: "Énergie",
   },
@@ -76,7 +77,7 @@ const DEVIS_ITEMS = [
     title: "Note de calculs",
     desc: "Calculs techniques détaillés pour la structure et les installations.",
     link: "/devis/note-calculs",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=85",
+    image: "/imge9.jpg",
     accent: "#1d5c7a",
     tag: "Calcul",
   },
@@ -84,7 +85,7 @@ const DEVIS_ITEMS = [
     title: "CPS — Métré & estimation",
     desc: "Cahier des Prescriptions Spéciales et estimation précise des coûts.",
     link: "/devis/cps-metres-estimation",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=85",
+    image: "/imge10.jpg",
     accent: "#1b2f6e",
     tag: "Estimation",
   },
@@ -92,7 +93,7 @@ const DEVIS_ITEMS = [
     title: "Consultation technique",
     desc: "Premier avis gratuit et orientation personnalisée pour votre projet.",
     link: "/devis/consultation-technique",
-    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=85",
+    image: "/imge11.jpg",
     accent: "#3ab87a",
     tag: "Gratuit",
     free: true,
@@ -556,7 +557,7 @@ export default function DevisPage() {
       <section style={S.hero}>
         {/* Image lumineuse — intérieur clair, moderne */}
         <img
-          src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1920&q=90"
+          src="/imge1.jpg"
           alt="Bureau d'études"
           style={S.heroImg}
         />
@@ -728,7 +729,7 @@ export default function DevisPage() {
           </Link>
         </div>
       </div>
-
+ <FloatingMenu />
       <Footer />
     </div>
   );

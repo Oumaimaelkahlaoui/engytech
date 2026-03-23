@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import { supabase } from '../../../../backend/supabaseClient'
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/MainFooter";
+import FloatingMenu from "../../components/Floatingmenu";
 
 /* ─────────────────────────────────────────
    STYLES
@@ -645,18 +646,45 @@ const handleFiles = (e) => {
                   <span style={S.fileIcon}>
                     {files.length > 0 ? "" : "📎"}
                   </span>
-                  {files.length > 0 ? (
-                    <p style={{ ...S.fileText, color: "#3ab87a", fontWeight: 400 }}>
-                      {files.length} fichier{files.length > 1 ? "s" : ""} sélectionné{files.length > 1 ? "s" : ""}
-                    </p>
-                  ) : (
-                    <>
-                      <p style={S.fileText}>
-                        Glissez vos fichiers ici ou <span style={{ color: "#2a7fa5", fontWeight: 500 }}>parcourir</span>
-                      </p>
-                      <p style={S.fileHint}>PDF, DWG, PNG, JPG — max 20 Mo</p>
-                    </>
-                  )}
+                {files.length > 0 ? (
+  <div style={{ display: "flex", flexDirection: "column", gap: 6, width: "100%" }}>
+    {files.map((file, i) => (
+      <div key={i} style={{
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        gap: 8, padding: "7px 12px",
+        background: "rgba(58,184,122,0.08)",
+        border: "1px solid rgba(58,184,122,0.25)",
+        borderRadius: 6,
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+          <span style={{ fontSize: "0.9rem", flexShrink: 0 }}>📄</span>
+          <span style={{
+            fontSize: "0.75rem", fontWeight: 400, color: "#0e1c3a",
+            whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
+          }}>
+            {file.name}
+          </span>
+        </div>
+        <span style={{
+          fontSize: "0.6rem", color: "#9aafc4", flexShrink: 0,
+          letterSpacing: "0.04em",
+        }}>
+          {(file.size / 1024).toFixed(0)} Ko
+        </span>
+      </div>
+    ))}
+    <p style={{ ...S.fileText, color: "#3ab87a", fontWeight: 400, margin: "4px 0 0" }}>
+      + Ajouter d'autres fichiers
+    </p>
+  </div>
+) : (
+  <>
+    <p style={S.fileText}>
+      Glissez vos fichiers ici ou <span style={{ color: "#2a7fa5", fontWeight: 500 }}>parcourir</span>
+    </p>
+    <p style={S.fileHint}>PDF, DWG, PNG, JPG — max 20 Mo</p>
+  </>
+)}
                   <input
                     id="file-upload"
                     type="file"
@@ -751,7 +779,7 @@ const handleFiles = (e) => {
 
           </div>
         </div>
-
+ <FloatingMenu />
         <Footer />
       </div>
     </>
