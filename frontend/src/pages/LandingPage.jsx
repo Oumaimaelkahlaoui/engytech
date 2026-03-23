@@ -38,7 +38,7 @@ const TESTIMONIALS = [
     avatar: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
-    quote: "ENGYTECH a su transformer un projet complexe en réussite. Leur expertise en structure et leur maîtrise du BIM ont fait toute la différence.",
+    quote: "<b>ARCH ENGYTECH</b> a su transformer un projet complexe en réussite. Leur expertise en structure et leur maîtrise du BIM ont fait toute la différence.",
     name: "Youssef Chraibi",
     role: "Maître d'Ouvrage, Marrakech",
     avatar: "https://randomuser.me/api/portraits/men/65.jpg",
@@ -322,13 +322,13 @@ export default function LandingPage() {
       {/* ══ ABOUT TEASER ══ */}
       <section className="lp-about-teaser" id="apropos">
         <div className="lp-about-teaser__img" data-reveal>
-          <img src="/img5.jpg" alt="ENGYTECH bureau d'études" />
+          <img src="/img5.jpg" alt="<b>ARCH ENGYTECH</b> bureau d'études" />
           <div className="lp-about-teaser__badge"><span>98%</span><small>taux de satisfaction client</small></div>
         </div>
         <div className="lp-about-teaser__text" data-reveal>
           <span className="section-label">01 — À propos</span>
           <h2 className="section-title">Nous bâtissons ce qui <em>dure</em></h2>
-          <p>ENGYTECH est un bureau d'ingénierie pluridisciplinaire alliant rigueur technique et innovation. Nous accompagnons maîtres d'ouvrage, architectes et promoteurs sur des projets de toute envergure.</p>
+          <p><b>ARCH ENGYTECH</b> est un bureau d'ingénierie pluridisciplinaire alliant rigueur technique et innovation. Nous accompagnons maîtres d'ouvrage, architectes et promoteurs sur des projets de toute envergure.</p>
           <div className="lp-about-teaser__stats">
             {[{n:"280+",l:"Projets livrés"},{n:"12+",l:"Années d'expertise"},{n:"10+",l:"Types de prestations"},{n:"98%",l:"Clients satisfaits"}].map(({n,l}) => (
               <div className="lp-about-stat" key={l}><strong>{n}</strong><span>{l}</span></div>

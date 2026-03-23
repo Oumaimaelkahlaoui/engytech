@@ -531,8 +531,8 @@ export default function About() {
         {/* TEXTE ORIGINAL */}
         <div className="ap-body">
           <h1 className="ap-body__h1">À propos de nous</h1>
-          <p className="ap-body__tagline"><b>ENGYTECH</b> – Ingénierie, Performance et Innovation Durable</p>
-          <p><b>ENGYTECH</b> est un bureau d'ingénierie spécialisé dans les études techniques, la conception et le suivi de projets de construction. Forts d'une vision moderne de l'ingénierie, nous accompagnons nos clients en leur proposant des solutions fiables, optimisées et conformes aux exigences techniques les plus élevées.</p>
+          <p className="ap-body__tagline"><b>ARCH ENGYTECH</b> – Ingénierie, Performance et Innovation Durable</p>
+          <p><b>ARCH ENGYTECH</b> est un bureau d'ingénierie spécialisé dans les études techniques, la conception et le suivi de projets de construction. Forts d'une vision moderne de l'ingénierie, nous accompagnons nos clients en leur proposant des solutions fiables, optimisées et conformes aux exigences techniques les plus élevées.</p>
           <p>Notre approche repose sur une compréhension approfondie des besoins du client, une analyse rigoureuse des contraintes du projet et l'utilisation d'outils d'ingénierie avancés. Chaque projet est traité avec précision, dans le respect des normes en vigueur et des objectifs de qualité, de coût et de délai.</p>
           <div className="ap-divider"><div className="ap-gem" /></div>
           <div className="ap-body__sh"><span className="ap-body__sh-label">Savoir-faire</span><h2>Notre <em>expertise</em></h2></div>
@@ -540,7 +540,7 @@ export default function About() {
           <p>Grâce à une maîtrise des outils numériques et des méthodes de calcul modernes, nous sommes en mesure de proposer des solutions innovantes, adaptées aux exigences techniques les plus complexes.</p>
           <div className="ap-divider"><div className="ap-gem" /></div>
           <div className="ap-body__sh"><span className="ap-body__sh-label">Relation client</span><h2>Une approche <em>orientée client</em></h2></div>
-          <p>Chez <b>ENGYTECH</b>, chaque projet est unique. Nous accordons une attention particulière à l'écoute de nos clients afin de comprendre leurs attentes et leur proposer des solutions personnalisées. Notre objectif est de bâtir une relation de confiance durable basée sur la transparence, la réactivité et la qualité du service.</p>
+          <p>Chez <b>ARCH ENGYTECH</b>, chaque projet est unique. Nous accordons une attention particulière à l'écoute de nos clients afin de comprendre leurs attentes et leur proposer des solutions personnalisées. Notre objectif est de bâtir une relation de confiance durable basée sur la transparence, la réactivité et la qualité du service.</p>
         </div>
 
         {/* CAROUSEL */}
@@ -597,7 +597,7 @@ export default function About() {
         {/* TEXTE — Engagement */}
         <div className="ap-body" style={{ paddingTop: "clamp(3rem,6vh,5rem)" }}>
           <div className="ap-body__sh"><span className="ap-body__sh-label">Notre engagement</span><h2>Notre <em>engagement</em></h2></div>
-          <p><b>ENGYTECH</b> s'engage à fournir des prestations de haute qualité en respectant les standards les plus exigeants de l'ingénierie. Notre équipe met tout en œuvre pour garantir la réussite des projets, en alliant expertise technique, rigueur professionnelle et esprit d'innovation.</p>
+          <p><b>ARCH ENGYTECH</b> s'engage à fournir des prestations de haute qualité en respectant les standards les plus exigeants de l'ingénierie. Notre équipe met tout en œuvre pour garantir la réussite des projets, en alliant expertise technique, rigueur professionnelle et esprit d'innovation.</p>
           <p>Notre ambition est de devenir un partenaire de référence dans le domaine de l'ingénierie, reconnu pour la qualité de ses services et la confiance accordée par ses clients.</p>
         </div>
 

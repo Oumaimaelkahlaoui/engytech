@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import DevisPage from "./pages/DevisPage";
-import AdminPage from "./pages/AdminPage";
+import AdminDashboard from "../src/components/AdminDashboard";
 import EtudeVRD from "./pages/devis/EtudeVRD";
 import OPC from "./pages/devis/OPC";
 import ClientForm from "./pages/devis/ClientForm"
@@ -24,7 +24,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/devis" element={<DevisPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/devis/etude-structure" element={<ClientForm />} />
 
         <Route path="/devis/etude-vrd" element={<EtudeVRD />} />

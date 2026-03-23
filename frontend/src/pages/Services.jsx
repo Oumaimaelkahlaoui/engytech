@@ -559,7 +559,7 @@ export default function Services() {
               L'ingénierie au service<br />de <em>vos ambitions</em>
             </h1>
             <p className="sv-hero__sub">
-              ENGYTECH accompagne maîtres d'ouvrage, architectes et promoteurs dans
+              <b>ARCH ENGYTECH</b> accompagne maîtres d'ouvrage, architectes et promoteurs dans
               la réalisation de leurs projets — de la première esquisse à la réception des travaux.
             </p>
             <div className="sv-hero__actions">
@@ -582,7 +582,7 @@ export default function Services() {
                 Un bureau d'ingénierie<br /><em>de référence</em>
               </h2>
               <p>
-                Fondé sur l'expertise technique et l'innovation, ENGYTECH intervient
+                Fondé sur l'expertise technique et l'innovation, <b>ARCH ENGYTECH</b> intervient
                 sur des projets de toute échelle — logements, bureaux, infrastructures
                 et ouvrages industriels — avec une approche rigoureuse et personnalisée.
               </p>
