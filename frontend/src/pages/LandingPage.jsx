@@ -300,7 +300,7 @@ export default function LandingPage() {
           <p className="hero__sub">Conception architecturale &amp; génie civil — de l'esquisse à la livraison.</p>
           <div className="hero__actions">
             <button className="btn btn--light" onClick={() => navigate("/services")}>Découvrir nos services</button>
-            <button className="btn btn--ghost"  onClick={() => navigate("/a-propos")}>Notre approche →</button>
+            <button className="btn btn--ghost"  onClick={() => navigate("/about")}>Notre approche →</button>
           </div>
         </div>
         <div className="hero__scroll-hint"><span>Scroll</span><div className="scroll-line" /></div>

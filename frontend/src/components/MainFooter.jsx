@@ -7,9 +7,17 @@ export default function MainFooter() {
     <img src="/unnamed.png" className="logo-img" />
         </div>
 
-        <nav className="footer__nav">
-          {["Accueil", "Services", "Projets", "Contact" ,"Carriere"].map((l) => (
-            <a key={l} href="/">{l}</a>
+            <nav className="footer__nav">
+          {[
+            { label: "Accueil", path: "/" },
+            { label: "Services", path: "/services" },
+            { label: "À propos", path: "/about" },
+            { label: "Contact", path: "/contact" },
+            { label: "Carriere", path: "/carriere" },
+          ].map((item) => (
+            <a key={item.label} href={item.path}>
+              {item.label}
+            </a>
           ))}
         </nav>
 
