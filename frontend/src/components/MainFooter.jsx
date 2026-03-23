@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function MainFooter() {
   return (
     <footer className="footer">
@@ -7,19 +9,21 @@ export default function MainFooter() {
     <img src="/unnamed.png" className="logo-img" />
         </div>
 
-            <nav className="footer__nav">
-          {[
-            { label: "Accueil", path: "/" },
-            { label: "Services", path: "/services" },
-            { label: "À propos", path: "/about" },
-            { label: "Contact", path: "/contact" },
-            { label: "Carriere", path: "/carriere" },
-          ].map((item) => (
-            <a key={item.label} href={item.path}>
-              {item.label}
-            </a>
-          ))}
-        </nav>
+    
+
+<nav className="footer__nav">
+  {[
+    { label: "Accueil", path: "/" },
+    { label: "Services", path: "/services" },
+    { label: "Projets", path: "/projets" },
+    { label: "Contact", path: "/contact" },
+    { label: "Carriere", path: "/carriere" },
+  ].map((item) => (
+    <Link key={item.label} to={item.path}>
+      {item.label}
+    </Link>
+  ))}
+</nav>
 
         <div className="footer__socials">
           {["LinkedIn", "Instagram", "Facebook"].map((s) => (
