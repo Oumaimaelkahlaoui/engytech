@@ -323,7 +323,7 @@ export default function LandingPage() {
       <section className="lp-about-teaser" id="apropos">
         <div className="lp-about-teaser__img" data-reveal>
           <img src="/img5.jpg" alt="ARCH ENGYTECH bureau d'études" />
-          <div className="lp-about-teaser__badge"><span>98%</span><small>taux de satisfaction client</small></div>
+          {/*<div className="lp-about-teaser__badge"><span>98%</span><small>taux de satisfaction client</small></div>*/}
         </div>
         <div className="lp-about-teaser__text" data-reveal>
           <span className="section-label">01 — À propos</span>
