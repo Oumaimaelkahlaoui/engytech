@@ -291,7 +291,7 @@ export default function LandingPage() {
             <button key={i} className={`hero__dot ${i === slideIndex ? "hero__dot--active" : ""}`} onClick={() => setSlideIndex(i)} />
           ))}
         </div>
-        <div className="hero__eyebrow">Bureau d'études — Marrakech, Maroc</div>
+        <div className="hero__eyebrow">Bureau d'études Techniques —  Maroc</div>
         <div className="hero__content">
           <h1 className="hero__title">
             <span className="line line--1">Ingénierie</span>
@@ -322,7 +322,7 @@ export default function LandingPage() {
       {/* ══ ABOUT TEASER ══ */}
       <section className="lp-about-teaser" id="apropos">
         <div className="lp-about-teaser__img" data-reveal>
-          <img src="/img5.jpg" alt="<b>ARCH ENGYTECH</b> bureau d'études" />
+          <img src="/img5.jpg" alt="ARCH ENGYTECH bureau d'études" />
           <div className="lp-about-teaser__badge"><span>98%</span><small>taux de satisfaction client</small></div>
         </div>
         <div className="lp-about-teaser__text" data-reveal>

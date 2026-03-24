@@ -34,7 +34,7 @@ export default function MainFooter() {
 
       <div className="footer__bottom">
         <p>© 2026 Engytech. Tous droits réservés.</p>
-        <p>Marrakech — Génie Civil & Architecture</p>
+        <p>Génie Civil & Architecture</p>
       </div>
     </footer>
   );
