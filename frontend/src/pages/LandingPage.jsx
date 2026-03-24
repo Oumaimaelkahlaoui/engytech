@@ -168,7 +168,7 @@ const css = `
     font-size:clamp(1.5rem,3vw,2.25rem); font-weight:700; color:#1B8A8F; display:block; line-height:1;
   }
   .lp-about-teaser__badge small {
-    font-size:.6rem; letter-spacing:.08em; text-transform:uppercase;
+    font-size:.49rem; letter-spacing:.08em; text-transform:uppercase;
     color:#7a909e; margin-top:4px; display:block; max-width:12ch; line-height:1.4;
   }
   .lp-about-teaser__text .section-title { margin:var(--space-sm) 0 var(--space-md); }
@@ -304,7 +304,7 @@ export default function LandingPage() {
           </div>
         </div>
         <div className="hero__scroll-hint"><span>Scroll</span><div className="scroll-line" /></div>
-        <div className="hero__counter"><span className="counter-num">12</span><span className="counter-label">ans d'expertise</span></div>
+       {/* <div className="hero__counter"><span className="counter-num">12</span><span className="counter-label">ans d'expertise</span></div>*/}
       </section>
 
       {/* ══ MARQUEE ══ */}
@@ -330,7 +330,7 @@ export default function LandingPage() {
           <h2 className="section-title">Nous bâtissons ce qui <em>dure</em></h2>
           <p><b>ARCH ENGYTECH</b> est un bureau d'ingénierie pluridisciplinaire alliant rigueur technique et innovation. Nous accompagnons maîtres d'ouvrage, architectes et promoteurs sur des projets de toute envergure.</p>
           <div className="lp-about-teaser__stats">
-            {[{n:"280+",l:"Projets livrés"},{n:"12+",l:"Années d'expertise"},{n:"10+",l:"Types de prestations"},{n:"98%",l:"Clients satisfaits"}].map(({n,l}) => (
+            {[{n:"280+",l:"Projets livrés"},{n:"10+",l:"Années d'expertise"},{n:"10+",l:"Types de prestations"},{n:"98%",l:"Clients satisfaits"}].map(({n,l}) => (
               <div className="lp-about-stat" key={l}><strong>{n}</strong><span>{l}</span></div>
             ))}
           </div>
