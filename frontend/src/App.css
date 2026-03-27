@@ -361,7 +361,6 @@ input, textarea, select {
 /* ── Burger ── */
 /* ── Burger ── */
 .burger {
-  /* ✅ TOUJOURS display:flex — la visibilité est gérée par media query */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -370,14 +369,16 @@ input, textarea, select {
   background: none;
   border: none;
   padding: 8px;
-
   z-index: 202;
   position: fixed;
+  top: 0;                        /* ← remplace top: 50% + transform */
+  right: var(--side-padding);    /* ← droite */
+  height: var(--navbar-h);       /* ← même hauteur que la navbar = centrage auto */
+  transform: none;               /* ← supprime le translateY(-50%) */
   flex-shrink: 0;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
-
 .burger span {
   display: flex;
   width: 26px;

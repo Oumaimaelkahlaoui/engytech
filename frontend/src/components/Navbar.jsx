@@ -5,42 +5,25 @@ const navItems = [
   { label: "Accueil",  path: "/" },
   { label: "À propos", path: "/about" },
   { label: "Services", path: "/services" },
-  { label: "Contact",  path: "/contact" },
+  { label: "Contact",  path: "/contact" }, // scroll anchor si Contact reste dans la page
 ];
 
 export default function Navbar() {
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 60);
-      if (menuOpen) setMenuOpen(false);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, [menuOpen]);
-
-  useEffect(() => {
-    document.body.classList.toggle("menu-open", menuOpen);
-    return () => document.body.classList.remove("menu-open");
-  }, [menuOpen]);
+  }, []);
 
   return (
-    <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
-
-      <Link to="/" className="navbar__logo">
-        <img src="/unnamed.png" className="logo-img" alt="Logo" />
-      </Link>
-
-      {menuOpen && (
-        <div onClick={() => setMenuOpen(false)} style={{
-          position:"fixed", inset:0,
-          background:"rgba(13,17,23,0.5)",
-          zIndex:189,
-        }}/>
-      )}
+    <nav className={`navbar navbar--visible ${scrolled ? "navbar--scrolled" : ""}`}>
+    <Link to="/" className="navbar__logo">
+  <img src="/unnamed.png" className="logo-img" alt="Logo" />
+</Link>
 
       <ul className={`navbar__links ${menuOpen ? "navbar__links--open" : ""}`}>
         {navItems.map(({ label, path }) => (
@@ -50,15 +33,16 @@ export default function Navbar() {
         ))}
       </ul>
 
-      {/* ✅ BURGER — toujours dans le DOM, visibilité gérée UNIQUEMENT par CSS */}
+      <button className="navbar__cta" onClick={() => navigate("/devis")}>
+        Devis gratuit →
+      </button>
+
       <button
         className={`burger ${menuOpen ? "burger--open" : ""}`}
-        onClick={() => setMenuOpen(v => !v)}
-        aria-label="Menu"
+        onClick={() => setMenuOpen(!menuOpen)}
       >
         <span /><span /><span />
       </button>
-
     </nav>
   );
 }
