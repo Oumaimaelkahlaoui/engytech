@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/MainFooter";
 import FloatingMenu from "../components/Floatingmenu";
 
-/* ─── SVG ICONS ─────────────────────────── */
 const Icon = {
   user: (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
