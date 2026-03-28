@@ -296,7 +296,7 @@ input, textarea, select {
   z-index: 201;
   position: relative; /* FIX: assure que le logo reste au-dessus du menu mobile */
 }
-.logo-img { display: block; height: 80px; width: auto; max-width: none; }
+.logo-img { display: block; height: 62px; width: auto; max-width: none; }
 .navbar--scrolled .navbar__logo { color: var(--ink); }
 
 .logo-mark {

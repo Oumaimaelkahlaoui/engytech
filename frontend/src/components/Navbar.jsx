@@ -27,8 +27,8 @@ export default function Navbar() {
 <img
   src="/unnamed.webp"
   alt="Logo ARCH ENGYTECH"
-  width={200}
-  height={60}
+  width={280}
+  height={62}
   fetchPriority="high"
 />
       </Link>
