@@ -18,10 +18,10 @@ function useReveal() {
 }
 
 const HERO_SLIDES = [
-  { src: "/img1.jpg", alt: "Intérieur lumineux moderne",           pos: "center 55%" },
-  { src: "/img2.jpg", alt: "Architecture lumineuse contemporaine", pos: "center center" },
-  { src: "/img3.jpg", alt: "Espace de vie clair et aéré",          pos: "center 40%" },
-  { src: "/img4.jpg", alt: "Villa moderne lumineuse",              pos: "center center" },
+  { src: "/img1.webp", alt: "Intérieur lumineux moderne",           pos: "center 55%" },
+  { src: "/img2.webp", alt: "Architecture lumineuse contemporaine", pos: "center center" },
+  { src: "/img3.webp", alt: "Espace de vie clair et aéré",          pos: "center 40%" },
+  { src: "/img4.webp", alt: "Villa moderne lumineuse",              pos: "center center" },
 ];
 
 const TESTIMONIALS = [
@@ -354,9 +354,9 @@ export default function LandingPage() {
       {/* ══ ABOUT TEASER ══ */}
       <section className="lp-about-teaser" id="apropos">
         <div className="lp-about-teaser__img" data-reveal>
-          {/* ✅ img5.jpg — assure-toi que ce fichier existe dans /public */}
+          {/* ✅ img5.webp — assure-toi que ce fichier existe dans /public */}
           <img
-            src="/img5.jpg"
+            src="/img5.webp"
             alt="Équipe ARCH ENGY TECH en bureau d'études"
             width={600}
             height={750}
@@ -406,10 +406,10 @@ export default function LandingPage() {
         </div>
         <div className="projects__grid">
           {[
-            { title:"Villa Moderne",       tag:"Résidentiel", img:"/img6.jpg",  size:"large"  },
-            { title:"Immeuble",            tag:"Collectif",   img:"/img7.jpg",  size:"small"  },
-            { title:"Complexe Commercial", tag:"Tertiaire",   img:"/img8.jpg",  size:"small"  },
-            { title:"Résidence Balnéaire", tag:"Luxe",        img:"/img10.jpg", size:"medium" },
+            { title:"Villa Moderne",       tag:"Résidentiel", img:"/img6.webp",  size:"large"  },
+            { title:"Immeuble",            tag:"Collectif",   img:"/img7.webp",  size:"small"  },
+            { title:"Complexe Commercial", tag:"Tertiaire",   img:"/img8.webp",  size:"small"  },
+            { title:"Résidence Balnéaire", tag:"Luxe",        img:"/img10.webp", size:"medium" },
           ].map(({ title, tag, img, size }) => (
             <div className={`project-card project-card--${size}`} key={title} data-reveal>
               {/* ✅ loading lazy + dimensions */}

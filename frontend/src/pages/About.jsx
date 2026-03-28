@@ -149,12 +149,12 @@ const IconClock    = () => (<svg viewBox="0 0 24 24" fill="none" stroke="#1B8A8F
 const IconHandshake= () => (<svg viewBox="0 0 24 24" fill="none" stroke="#1B8A8F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{width:22,height:22}} aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>);
 
 const expertises = [
-  { num:"01", title:"Structures béton armé & métal",  desc:"Conception, calcul et dimensionnement pour tous types de bâtiments.",    img:"/image1.jpg" },
-  { num:"02", title:"VRD & Aménagement",              desc:"Voirie, réseaux divers, drainage, assainissement.",                       img:"/image2.jpg" },
-  { num:"03", title:"Optimisation énergétique",       desc:"Audit thermique, solutions passives et actives.",                         img:"/image3.jpg" },
-  { num:"04", title:"Contrôle & suivi de travaux",    desc:"Missions OPC, maîtrise d'œuvre et assistance AMO.",                      img:"/image4.jpg" },
-  { num:"05", title:"Modélisation BIM",               desc:"Maquettes numériques 3D, coordination pluridisciplinaire.",               img:"/image5.jpg" },
-  { num:"06", title:"Éco-conception & durabilité",    desc:"HQE, matériaux biosourcés et bilan carbone.",                            img:"/image6.jpg" },
+  { num:"01", title:"Structures béton armé & métal",  desc:"Conception, calcul et dimensionnement pour tous types de bâtiments.",    img:"/image1.webp" },
+  { num:"02", title:"VRD & Aménagement",              desc:"Voirie, réseaux divers, drainage, assainissement.",                       img:"/image2.webp" },
+  { num:"03", title:"Optimisation énergétique",       desc:"Audit thermique, solutions passives et actives.",                         img:"/image3.webp" },
+  { num:"04", title:"Contrôle & suivi de travaux",    desc:"Missions OPC, maîtrise d'œuvre et assistance AMO.",                      img:"/image4.webp" },
+  { num:"05", title:"Modélisation BIM",               desc:"Maquettes numériques 3D, coordination pluridisciplinaire.",               img:"/image5.webp" },
+  { num:"06", title:"Éco-conception & durabilité",    desc:"HQE, matériaux biosourcés et bilan carbone.",                            img:"/image6.webp" },
 ];
 
 const innovItems   = [

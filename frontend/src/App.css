@@ -1098,7 +1098,8 @@ cite span   { display: block; font-size: 0.75rem;  color: var(--dust); text-alig
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #64748b;
+  color:  #4a5568;
+
   transition: all 0.3s ease;
 }
 
@@ -1116,7 +1117,7 @@ cite span   { display: block; font-size: 0.75rem;  color: var(--dust); text-alig
 .footer__socials a {
   font-size: 0.75rem;
   font-weight: 500;
-  color: #94a3b8;
+  color: #4a5568;
   transition: all 0.2s;
   padding: 4px 0;
   border-bottom: 2px solid transparent;
@@ -1139,7 +1140,7 @@ cite span   { display: block; font-size: 0.75rem;  color: var(--dust); text-alig
 
 .footer__bottom p {
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: #4a5568;
   letter-spacing: 0.02em;
 }
 

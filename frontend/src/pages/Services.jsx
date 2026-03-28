@@ -138,10 +138,10 @@ const IcoPencil = ({s="#1B8A8F"}) => (<svg viewBox="0 0 24 24" fill="none" strok
 const IcoCheck  = ({s="#1B8A8F"}) => (<svg viewBox="0 0 24 24" fill="none" stroke={s} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>);
 
 const domains = [
-  { tag:"Études techniques", title:"Conception & calcul",   desc:"Structures béton armé, charpentes métalliques, fondations spéciales.", img:"/1.jpg" },
-  { tag:"Suivi de chantier", title:"Pilotage & contrôle",   desc:"Maîtrise d'œuvre, OPC et assistance à maîtrise d'ouvrage.",           img:"/2.jpg" },
-  { tag:"Performance",       title:"Énergie & durabilité",  desc:"Audits thermiques, simulations STD, démarches HQE et bilan carbone.", img:"/3.jpg" },
-  { tag:"Numérique",         title:"BIM & innovation",      desc:"Maquettes numériques 3D, coordination multi-corps d'état.",           img:"/4.jpg" },
+  { tag:"Études techniques", title:"Conception & calcul",   desc:"Structures béton armé, charpentes métalliques, fondations spéciales.", img:"/1.webp" },
+  { tag:"Suivi de chantier", title:"Pilotage & contrôle",   desc:"Maîtrise d'œuvre, OPC et assistance à maîtrise d'ouvrage.",           img:"/2.webp" },
+  { tag:"Performance",       title:"Énergie & durabilité",  desc:"Audits thermiques, simulations STD, démarches HQE et bilan carbone.", img:"/3.webp" },
+  { tag:"Numérique",         title:"BIM & innovation",      desc:"Maquettes numériques 3D, coordination multi-corps d'état.",           img:"/4.webp" },
 ];
 
 const steps = [

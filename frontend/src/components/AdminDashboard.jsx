@@ -778,7 +778,7 @@ function PrintPreview({ facture, items, onClose }) {
 
   /* ── Watermark logo (background) ── */
 const WatermarkLogo = () => (
-  <img src="/unnamed1.jpg" alt=""
+  <img src="/unnamed1.webp" alt=""
     style={{
       position: "absolute",
       top: "50%",

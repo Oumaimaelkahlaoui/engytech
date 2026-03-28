@@ -17,16 +17,16 @@ function useReveal() {
 }
 
 const DEVIS_ITEMS = [
-  { title:"Étude de structure",          desc:"Béton armé ou métallique — analyse et calculs de stabilité des structures.",         link:"/devis/etude-structure",          image:"/imge2.jpg",  accent:"#1b2f6e", tag:"Structure"  },
-  { title:"Étude VRD",                   desc:"Assainissement, voirie et réseaux — conception et planification complète.",           link:"/devis/etude-vrd",                image:"/imge3.jpg",  accent:"#2a7fa5", tag:"Réseaux"    },
-  { title:"OPC – Pilotage & Coordination",desc:"Gestion des phases chantier et coordination des corps d'état.",                     link:"/devis/opc",                      image:"/imge4.jpg",  accent:"#1d5c7a", tag:"Gestion"    },
-  { title:"Notice sécurité incendie",    desc:"Évaluation des risques, plans d'évacuation et conformité SSI.",                      link:"/devis/notice-securite-incendie", image:"/imge5.jpg",  accent:"#c0392b", tag:"Sécurité"   },
-  { title:"Expertise & diagnostic",      desc:"Diagnostic des ouvrages, pathologies et rapport technique détaillé.",                link:"/devis/expertise-technique",      image:"/imge6.jpg",  accent:"#1b2f6e", tag:"Expertise"  },
-  { title:"Suivi & contrôle technique",  desc:"Contrôle qualité et suivi de chantier pour conformité et sécurité.",                link:"/devis/suivi-controle-technique", image:"/imge7.jpg",  accent:"#2a7fa5", tag:"Contrôle"   },
-  { title:"Efficacité Énergétique",      desc:"Optimisation énergétique des bâtiments et conseils sur la performance.",            link:"/devis/efficacite-energetique",   image:"/imge8.jpg",  accent:"#3ab87a", tag:"Énergie"    },
-  { title:"Note de calculs",             desc:"Calculs techniques détaillés pour la structure et les installations.",               link:"/devis/note-calculs",             image:"/imge9.jpg",  accent:"#1d5c7a", tag:"Calcul"     },
-  { title:"CPS — Métré & estimation",    desc:"Cahier des Prescriptions Spéciales et estimation précise des coûts.",               link:"/devis/cps-metres-estimation",    image:"/imge10.jpg", accent:"#1b2f6e", tag:"Estimation" },
-  { title:"Consultation technique",      desc:"Premier avis gratuit et orientation personnalisée pour votre projet.",              link:"/devis/consultation-technique",   image:"/imge11.jpg", accent:"#3ab87a", tag:"Gratuit",   free:true },
+  { title:"Étude de structure",          desc:"Béton armé ou métallique — analyse et calculs de stabilité des structures.",         link:"/devis/etude-structure",          image:"/imge2.webp",  accent:"#1b2f6e", tag:"Structure"  },
+  { title:"Étude VRD",                   desc:"Assainissement, voirie et réseaux — conception et planification complète.",           link:"/devis/etude-vrd",                image:"/imge3.webp",  accent:"#2a7fa5", tag:"Réseaux"    },
+  { title:"OPC – Pilotage & Coordination",desc:"Gestion des phases chantier et coordination des corps d'état.",                     link:"/devis/opc",                      image:"/imge4.webp",  accent:"#1d5c7a", tag:"Gestion"    },
+  { title:"Notice sécurité incendie",    desc:"Évaluation des risques, plans d'évacuation et conformité SSI.",                      link:"/devis/notice-securite-incendie", image:"/imge5.webp",  accent:"#c0392b", tag:"Sécurité"   },
+  { title:"Expertise & diagnostic",      desc:"Diagnostic des ouvrages, pathologies et rapport technique détaillé.",                link:"/devis/expertise-technique",      image:"/imge6.webp",  accent:"#1b2f6e", tag:"Expertise"  },
+  { title:"Suivi & contrôle technique",  desc:"Contrôle qualité et suivi de chantier pour conformité et sécurité.",                link:"/devis/suivi-controle-technique", image:"/imge7.webp",  accent:"#2a7fa5", tag:"Contrôle"   },
+  { title:"Efficacité Énergétique",      desc:"Optimisation énergétique des bâtiments et conseils sur la performance.",            link:"/devis/efficacite-energetique",   image:"/imge8.webp",  accent:"#3ab87a", tag:"Énergie"    },
+  { title:"Note de calculs",             desc:"Calculs techniques détaillés pour la structure et les installations.",               link:"/devis/note-calculs",             image:"/imge9.webp",  accent:"#1d5c7a", tag:"Calcul"     },
+  { title:"CPS — Métré & estimation",    desc:"Cahier des Prescriptions Spéciales et estimation précise des coûts.",               link:"/devis/cps-metres-estimation",    image:"/imge10.webp", accent:"#1b2f6e", tag:"Estimation" },
+  { title:"Consultation technique",      desc:"Premier avis gratuit et orientation personnalisée pour votre projet.",              link:"/devis/consultation-technique",   image:"/imge11.webp", accent:"#3ab87a", tag:"Gratuit",   free:true },
 ];
 
 const S = {
@@ -123,7 +123,7 @@ export default function DevisPage() {
       <section style={S.hero} aria-label="Demande de devis">
         {/* ✅ loading eager (LCP) + width/height + alt descriptif */}
         <img
-          src="/imge1.jpg"
+          src="/imge1.webp"
           alt="Bureau d'études ARCH ENGYTECH"
           style={S.heroImg}
           loading="eager"
