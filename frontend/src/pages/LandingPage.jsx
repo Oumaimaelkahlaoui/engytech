@@ -38,7 +38,7 @@ const TESTIMONIALS = [
     avatar: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
-    quote: "<b>ARCH ENGYTECH</b> a su transformer un projet complexe en réussite. Leur expertise en structure et leur maîtrise du BIM ont fait toute la différence.",
+    quote: "ARCH ENGY TECH a su transformer un projet complexe en réussite. Leur expertise en structure et leur maîtrise du BIM ont fait toute la différence.",
     name: "Youssef Chraibi",
     role: "Maître d'Ouvrage, Marrakech",
     avatar: "https://randomuser.me/api/portraits/men/65.jpg",
@@ -87,18 +87,33 @@ function TestimonialCarousel() {
           <span className="quote-mark">"</span>
           <blockquote>{t.quote}</blockquote>
           <cite>
-            <img src={t.avatar} alt={t.name} className="cite-avatar" />
+            {/* ✅ width + height ajoutés */}
+            <img
+              src={t.avatar}
+              alt={`Photo de ${t.name}`}
+              className="cite-avatar"
+              width={48}
+              height={48}
+              loading="lazy"
+            />
             <div><strong>{t.name}</strong><span>{t.role}</span></div>
           </cite>
         </div>
         <div className="tc-nav">
-          <button className="tc-btn" onClick={prev} aria-label="Précédent">←</button>
-          <div className="tc-dots">
+          <button className="tc-btn" onClick={prev} aria-label="Témoignage précédent">←</button>
+          <div className="tc-dots" role="tablist" aria-label="Témoignages">
             {TESTIMONIALS.map((_, i) => (
-              <button key={i} className={`tc-dot${i === idx ? " active" : ""}`} onClick={() => setIdx(i)} aria-label={`Témoignage ${i + 1}`} />
+              <button
+                key={i}
+                className={`tc-dot${i === idx ? " active" : ""}`}
+                onClick={() => setIdx(i)}
+                aria-label={`Témoignage ${i + 1}`}
+                role="tab"
+                aria-selected={i === idx}
+              />
             ))}
           </div>
-          <button className="tc-btn" onClick={next} aria-label="Suivant">→</button>
+          <button className="tc-btn" onClick={next} aria-label="Témoignage suivant">→</button>
         </div>
       </div>
     </>
@@ -270,28 +285,44 @@ export default function LandingPage() {
   return (
     <>
       <style>{css}</style>
-      <div className="cursor-ring" ref={cursorRef} />
-      <div className="cursor-dot"  ref={cursorDotRef} />
+      <div className="cursor-ring" ref={cursorRef} aria-hidden="true" />
+      <div className="cursor-dot"  ref={cursorDotRef} aria-hidden="true" />
       <Navbar />
 
       {/* ══ HERO ══ */}
-      <section className="hero" id="accueil">
-        <div className="hero__bg">
+      <section className="hero" id="accueil" aria-label="Présentation ARCH ENGYTECH">
+        <div className="hero__bg" aria-hidden="true">
           <div className="hero__overlay" />
           {HERO_SLIDES.map((slide, i) => (
             <img
-              key={slide.src} src={slide.src} alt={slide.alt}
+              key={slide.src}
+              src={slide.src}
+              alt={slide.alt}
               style={{ objectPosition: slide.pos }}
               className={`hero__img hero__img--slide ${i === slideIndex ? "hero__img--active" : ""}`}
+              /* ✅ eager sur la 1re slide (LCP), lazy sur les autres */
+              loading={i === 0 ? "eager" : "lazy"}
+              width={1920}
+              height={1080}
             />
           ))}
         </div>
-        <div className="hero__dots">
-          {HERO_SLIDES.map((_, i) => (
-            <button key={i} className={`hero__dot ${i === slideIndex ? "hero__dot--active" : ""}`} onClick={() => setSlideIndex(i)} />
+
+        {/* ✅ aria-label sur chaque dot */}
+        <div className="hero__dots" role="tablist" aria-label="Diapositives">
+          {HERO_SLIDES.map((slide, i) => (
+            <button
+              key={i}
+              className={`hero__dot ${i === slideIndex ? "hero__dot--active" : ""}`}
+              onClick={() => setSlideIndex(i)}
+              aria-label={`Diapositive ${i + 1} : ${slide.alt}`}
+              role="tab"
+              aria-selected={i === slideIndex}
+            />
           ))}
         </div>
-        <div className="hero__eyebrow">Bureau d'études Techniques —  Maroc</div>
+
+        <div className="hero__eyebrow">Bureau d'études Techniques — Maroc</div>
         <div className="hero__content">
           <h1 className="hero__title">
             <span className="line line--1">Ingénierie</span>
@@ -303,12 +334,11 @@ export default function LandingPage() {
             <button className="btn btn--ghost"  onClick={() => navigate("/about")}>Notre approche →</button>
           </div>
         </div>
-        <div className="hero__scroll-hint"><span>Scroll</span><div className="scroll-line" /></div>
-       {/* <div className="hero__counter"><span className="counter-num">12</span><span className="counter-label">ans d'expertise</span></div>*/}
+        <div className="hero__scroll-hint" aria-hidden="true"><span>Scroll</span><div className="scroll-line" /></div>
       </section>
 
       {/* ══ MARQUEE ══ */}
-      <div className="marquee-band">
+      <div className="marquee-band" aria-hidden="true">
         <div className="marquee-track">
           {["Étude Structure","VRD","Pilotage Chantier","BIM","Efficacité Énergétique","HQE","Note de Calculs","Expertise Diagnostic"].map((t, i) => (
             <span key={i} className="marquee-item">{t} <em>—</em></span>
@@ -322,8 +352,14 @@ export default function LandingPage() {
       {/* ══ ABOUT TEASER ══ */}
       <section className="lp-about-teaser" id="apropos">
         <div className="lp-about-teaser__img" data-reveal>
-          <img src="/img5.jpg" alt="ARCH ENGYTECH bureau d'études" />
-          {/*<div className="lp-about-teaser__badge"><span>98%</span><small>taux de satisfaction client</small></div>*/}
+          {/* ✅ img5.jpg — assure-toi que ce fichier existe dans /public */}
+          <img
+            src="/img5.jpg"
+            alt="Équipe ARCH ENGYTECH en bureau d'études"
+            width={600}
+            height={750}
+            loading="lazy"
+          />
         </div>
         <div className="lp-about-teaser__text" data-reveal>
           <span className="section-label">01 — À propos</span>
@@ -353,7 +389,7 @@ export default function LandingPage() {
               <span className="lp-svc-card__num">{num}</span>
               <h3>{title}</h3>
               <p>{desc}</p>
-              <span className="lp-svc-card__arrow">→</span>
+              <span className="lp-svc-card__arrow" aria-hidden="true">→</span>
             </div>
           ))}
         </div>
@@ -374,11 +410,12 @@ export default function LandingPage() {
             { title:"Résidence Balnéaire", tag:"Luxe",        img:"/img10.jpg", size:"medium" },
           ].map(({ title, tag, img, size }) => (
             <div className={`project-card project-card--${size}`} key={title} data-reveal>
-              <img src={img} alt={title} />
+              {/* ✅ loading lazy + dimensions */}
+              <img src={img} alt={title} loading="lazy" width={800} height={600} />
               <div className="project-card__overlay">
                 <span className="project-tag">{tag}</span>
                 <h3>{title}</h3>
-                <span className="project-arrow">→</span>
+                <span className="project-arrow" aria-hidden="true">→</span>
               </div>
             </div>
           ))}
@@ -386,7 +423,7 @@ export default function LandingPage() {
       </section>
 
       {/* ══ TESTIMONIALS ══ */}
-      <section className="testimonial">
+      <section className="testimonial" aria-label="Témoignages clients">
         <div className="testimonial__inner" data-reveal>
           <TestimonialCarousel />
         </div>
@@ -394,7 +431,7 @@ export default function LandingPage() {
 
       {/* ══ CTA DEVIS ══ */}
       <section className="cta" id="devis">
-        <div className="cta__bg" />
+        <div className="cta__bg" aria-hidden="true" />
         <div className="cta__content" data-reveal>
           <span className="section-label section-label--light">Prêt à construire ?</span>
           <h2>Obtenez votre devis <em>instantanément</em></h2>
@@ -417,11 +454,11 @@ export default function LandingPage() {
           </div>
           <div className="lp-contact-infos" data-reveal>
             {[
-              { icon:<svg viewBox="0 0 24 24" fill="none" stroke="#1B8A8F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .98h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z"/></svg>, label:"Téléphone", value:"(+212) 6 62 25 78 79", href:"tel:+212662257879" },
-              { icon:<svg viewBox="0 0 24 24" fill="none" stroke="#1B8A8F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>, label:"Email", value:"contact@archengytech.ma", href:"mailto:contact@archengytech.ma" },
-              { icon:<svg viewBox="0 0 24 24" fill="none" stroke="#1B8A8F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>, label:"Adresse", value:"Marrakech, Maroc", href:"#" },
+              { icon:<svg viewBox="0 0 24 24" fill="none" stroke="#1B8A8F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .98h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z"/></svg>, label:"Téléphone", value:"(+212) 6 62 25 78 79", href:"tel:+212662257879" },
+              { icon:<svg viewBox="0 0 24 24" fill="none" stroke="#1B8A8F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>, label:"Email", value:"contact@archengytech.ma", href:"mailto:contact@archengytech.ma" },
+              { icon:<svg viewBox="0 0 24 24" fill="none" stroke="#1B8A8F" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>, label:"Adresse", value:"Marrakech, Maroc", href:"https://maps.google.com/?q=Marrakech" },
             ].map(({ icon, label, value, href }) => (
-              <a href={href} className="lp-contact-item" key={label}>
+              <a href={href} className="lp-contact-item" key={label} aria-label={`${label} : ${value}`}>
                 <div className="lp-contact-item__icon">{icon}</div>
                 <div className="lp-contact-item__text"><strong>{label}</strong><span>{value}</span></div>
               </a>
@@ -430,9 +467,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ══ FLOATING MENU ══ */}
       <FloatingMenu />
-
       <Footer />
     </>
   );

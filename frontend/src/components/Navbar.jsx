@@ -5,13 +5,13 @@ const navItems = [
   { label: "Accueil",  path: "/" },
   { label: "À propos", path: "/about" },
   { label: "Services", path: "/services" },
-  { label: "Contact",  path: "/contact" }, // scroll anchor si Contact reste dans la page
+  { label: "Contact",  path: "/contact" },
 ];
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
+  const [menuOpen, setMenuOpen]   = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -21,11 +21,21 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar navbar--visible ${scrolled ? "navbar--scrolled" : ""}`}>
-    <Link to="/" className="navbar__logo">
-  <img src="/unnamed.png" className="logo-img" alt="Logo" />
-</Link>
 
-      <ul className={`navbar__links ${menuOpen ? "navbar__links--open" : ""}`}>
+      {/* ✅ alt ajouté + dimensions */}
+      <Link to="/" className="navbar__logo" aria-label="Retour à l'accueil">
+        <img
+          src="/unnamed.png"
+          className="logo-img"
+          alt="Logo ARCH ENGYTECH"
+          
+        />
+      </Link>
+
+      <ul
+        className={`navbar__links ${menuOpen ? "navbar__links--open" : ""}`}
+        role="list"
+      >
         {navItems.map(({ label, path }) => (
           <li key={label} onClick={() => setMenuOpen(false)}>
             <Link to={path}><span>{label}</span></Link>
@@ -33,16 +43,26 @@ export default function Navbar() {
         ))}
       </ul>
 
-      <button className="navbar__cta" onClick={() => navigate("/devis")}>
+      <button
+        className="navbar__cta"
+        onClick={() => navigate("/devis")}
+      >
         Devis gratuit →
       </button>
 
+      {/* ✅ aria-label + aria-expanded + aria-controls ajoutés */}
       <button
         className={`burger ${menuOpen ? "burger--open" : ""}`}
-        onClick={() => setMenuOpen(!menuOpen)}
+        onClick={() => setMenuOpen((o) => !o)}
+        aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+        aria-expanded={menuOpen}
+        aria-controls="navbar-links"
       >
-        <span /><span /><span />
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
+        <span aria-hidden="true" />
       </button>
+
     </nav>
   );
 }
