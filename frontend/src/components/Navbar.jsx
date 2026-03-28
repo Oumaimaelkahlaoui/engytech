@@ -24,12 +24,13 @@ export default function Navbar() {
 
       {/* ✅ alt ajouté + dimensions */}
       <Link to="/" className="navbar__logo" aria-label="Retour à l'accueil">
-        <img
-          src="/unnamed.png"
-          className="logo-img"
-          alt="Logo ARCH ENGYTECH"
-          
-        />
+<img
+  src="/unnamed.webp"
+  alt="Logo ARCH ENGYTECH"
+  width={200}
+  height={60}
+  fetchPriority="high"
+/>
       </Link>
 
       <ul

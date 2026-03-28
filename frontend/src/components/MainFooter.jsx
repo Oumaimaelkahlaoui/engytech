@@ -5,14 +5,13 @@ export default function MainFooter() {
     <footer className="footer">
       <div className="footer__top">
         <div className="footer__brand">
-
-          {/* ✅ alt + dimensions ajoutés */}
-          <img
-            src="/unnamed.png"
-            className="logo-img"
-            alt="Logo ARCH ENGYTECH"
-          
-          />
+<img
+  src="/unnamed.webp"
+  alt="Logo ARCH ENGYTECH"
+   width={200}
+  height={60}
+  fetchPriority="high"
+/>
 
         </div>
 
