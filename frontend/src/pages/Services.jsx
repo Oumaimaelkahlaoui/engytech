@@ -194,7 +194,7 @@ export default function Services() {
           <div className="sv-hero__inner">
             <p className="sv-eyebrow">Nos services</p>
             <h1 className="sv-hero__title">L'ingénierie au service<br />de <em>vos ambitions</em></h1>
-            <p className="sv-hero__sub"><b>ARCH ENGYTECH</b> accompagne maîtres d'ouvrage, architectes et promoteurs dans la réalisation de leurs projets.</p>
+            <p className="sv-hero__sub"><b>ARCH ENGY TECH</b> accompagne maîtres d'ouvrage, architectes et promoteurs dans la réalisation de leurs projets.</p>
             <div className="sv-hero__actions">
               <button className="btn btn--accent" onClick={() => navigate("/devis")}>Voir nos prestations →</button>
               <button className="btn btn--ghost"  onClick={() => navigate("/contact")}>Nous contacter</button>
@@ -207,7 +207,7 @@ export default function Services() {
             <div className="sv-intro__text" data-reveal>
               <span className="sv-intro__label">Qui sommes-nous</span>
               <h2 className="sv-intro__title">Un bureau d'ingénierie<br /><em>de référence</em></h2>
-              <p>Fondé sur l'expertise technique et l'innovation, <b>ARCH ENGYTECH</b> intervient sur des projets de toute échelle avec une approche rigoureuse et personnalisée.</p>
+              <p>Fondé sur l'expertise technique et l'innovation, <b>ARCH ENGY TECH</b> intervient sur des projets de toute échelle avec une approche rigoureuse et personnalisée.</p>
               <p>Notre équipe pluridisciplinaire maîtrise l'ensemble des spécialités de l'ingénierie du bâtiment.</p>
               <br />
               <button className="btn btn--accent" onClick={() => navigate("/devis")}>Découvrir nos 10 prestations →</button>

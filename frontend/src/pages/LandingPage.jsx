@@ -88,6 +88,8 @@ function TestimonialCarousel() {
           <blockquote>{t.quote}</blockquote>
           <cite>
             {/* ✅ width + height ajoutés */}
+            {/* ✅ width + height ajoutés */}
+
             <img
               src={t.avatar}
               alt={`Photo de ${t.name}`}
@@ -290,7 +292,7 @@ export default function LandingPage() {
       <Navbar />
 
       {/* ══ HERO ══ */}
-      <section className="hero" id="accueil" aria-label="Présentation ARCH ENGYTECH">
+      <section className="hero" id="accueil" aria-label="Présentation ARCH ENGY TECH">
         <div className="hero__bg" aria-hidden="true">
           <div className="hero__overlay" />
           {HERO_SLIDES.map((slide, i) => (
@@ -355,7 +357,7 @@ export default function LandingPage() {
           {/* ✅ img5.jpg — assure-toi que ce fichier existe dans /public */}
           <img
             src="/img5.jpg"
-            alt="Équipe ARCH ENGYTECH en bureau d'études"
+            alt="Équipe ARCH ENGY TECH en bureau d'études"
             width={600}
             height={750}
             loading="lazy"
@@ -364,7 +366,7 @@ export default function LandingPage() {
         <div className="lp-about-teaser__text" data-reveal>
           <span className="section-label">01 — À propos</span>
           <h2 className="section-title">Nous bâtissons ce qui <em>dure</em></h2>
-          <p><b>ARCH ENGYTECH</b> est un bureau d'ingénierie pluridisciplinaire alliant rigueur technique et innovation. Nous accompagnons maîtres d'ouvrage, architectes et promoteurs sur des projets de toute envergure.</p>
+          <p><b>ARCH ENGY TECH</b> est un bureau d'ingénierie pluridisciplinaire alliant rigueur technique et innovation. Nous accompagnons maîtres d'ouvrage, architectes et promoteurs sur des projets de toute envergure.</p>
           <div className="lp-about-teaser__stats">
             {[{n:"280+",l:"Projets livrés"},{n:"10+",l:"Années d'expertise"},{n:"10+",l:"Types de prestations"},{n:"98%",l:"Clients satisfaits"}].map(({n,l}) => (
               <div className="lp-about-stat" key={l}><strong>{n}</strong><span>{l}</span></div>
