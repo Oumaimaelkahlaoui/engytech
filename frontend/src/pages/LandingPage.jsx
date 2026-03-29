@@ -372,7 +372,7 @@ export default function LandingPage() {
               <div className="lp-about-stat" key={l}><strong>{n}</strong><span>{l}</span></div>
             ))}
           </div>
-          <button className="btn btn--accent" onClick={() => navigate("/a-propos")}>En savoir plus →</button>
+          <button className="btn btn--accent" onClick={() => navigate("/about")}>En savoir plus →</button>
         </div>
       </section>
 
@@ -401,8 +401,8 @@ export default function LandingPage() {
       <section className="projects" id="projets">
         <div className="projects__header" data-reveal>
           <span className="section-label">03 — Réalisations</span>
-          <h2 className="section-title">Nos projets phares</h2>
-          <button className="btn btn--light" onClick={() => navigate("/projets")}>Voir tous les projets →</button>
+        {/*  <h2 className="section-title">Nos projets phares</h2>
+         <button className="btn btn--light" onClick={() => navigate("/projets")}>Voir tous les projets →</button>*/}
         </div>
         <div className="projects__grid">
           {[

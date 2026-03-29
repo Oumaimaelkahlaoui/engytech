@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://engytech.vercel.app/sitemap.xml
+Sitemap: https://archengytech.com/sitemap.xml

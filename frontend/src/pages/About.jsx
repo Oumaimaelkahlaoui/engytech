@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/MainFooter";
 import FloatingMenu from "../components/Floatingmenu";
+import { Link } from "react-router-dom";
+
 
 // [CSS identique à l'original — non modifié]
 const css = `
@@ -337,8 +339,9 @@ export default function About() {
             <h2>Votre projet mérite<br /><em>l'excellence technique</em></h2>
             <p className="ap-cta__desc">Discutons de vos besoins et construisons ensemble la solution d'ingénierie la plus adaptée à vos objectifs.</p>
             <div className="ap-cta__actions">
-              <a href="/devis"   className="btn btn--light">Demander un devis →</a>
-              <a href="/contact" className="btn btn--ghost">Nous contacter</a>
+              
+<Link to="/devis"   className="btn btn--light">Demander un devis →</Link>
+<Link to="/contact" className="btn btn--ghost">Nous contacter</Link>
             </div>
           </div>
         </section>
