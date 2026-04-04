@@ -177,48 +177,92 @@ export default function About() {
   const cursorRef    = useRef(null);
   const cursorDotRef = useRef(null);
 
-  useEffect(() => {
-    const els = document.querySelectorAll("[data-reveal]");
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-visible"); observer.unobserve(e.target); } }),
-      { threshold: 0.12 }
-    );
-    els.forEach((el) => observer.observe(el));
+useEffect(() => {
+  const els = document.querySelectorAll("[data-reveal]");
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-visible"); observer.unobserve(e.target); } }),
+    { threshold: 0.12 }
+  );
+  els.forEach((el) => observer.observe(el));
 
-    const outer = trackRef.current?.parentElement;
-    if (!outer) return;
-    let isDragging = false, startX = 0;
-    const onDown = (e) => { isDragging = true; startX = e.pageX; };
-    const onUp   = () => { isDragging = false; };
-    const onMove = (e) => {
-      if (!isDragging) return;
-      const track = trackRef.current;
-      if (!track) return;
-      const dx  = e.pageX - startX;
-      const cur = new WebKitCSSMatrix(getComputedStyle(track).transform).m41;
-      track.style.transform = `translateX(${cur + dx}px)`;
-      track.style.animation = "none";
-      startX = e.pageX;
-    };
-    outer.addEventListener("mousedown", onDown);
-    window.addEventListener("mouseup", onUp);
-    outer.addEventListener("mousemove", onMove);
+  const outer = trackRef.current?.parentElement;
+  if (!outer) return;
 
-    const move = (e) => {
-      if (cursorRef.current)    cursorRef.current.style.transform    = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
-      if (cursorDotRef.current) cursorDotRef.current.style.transform = `translate(${e.clientX - 4}px,  ${e.clientY - 4}px)`;
-    };
-    window.addEventListener("mousemove", move);
+  let isDragging = false;
+  let startX     = 0;
+  let posX       = 0;   // position courante du track
+  let velocity   = 0;
+  let lastX      = 0;
+  let rafId      = null;
 
-    return () => {
-      observer.disconnect();
-      outer.removeEventListener("mousedown", onDown);
-      window.removeEventListener("mouseup", onUp);
-      outer.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mousemove", move);
-    };
-  }, []);
+  const applyPos = (x) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const half = track.scrollWidth / 2;
+    if (x < -half) x += half;
+    if (x > 0)     x -= half;
+    posX = x;
+    track.style.animation = "none";
+    track.style.transform = `translateX(${x}px)`;
+  };
 
+  const tick = () => {
+    velocity *= 0.95;
+    if (Math.abs(velocity) < 0.2) return; // stop
+    applyPos(posX + velocity);
+    rafId = requestAnimationFrame(tick);
+  };
+
+  const onDown = (e) => {
+    cancelAnimationFrame(rafId);
+    isDragging = true;
+    velocity   = 0;
+    // Lire la position RÉELLE du track au moment du clic
+    const track = trackRef.current;
+    if (track) {
+      posX = new WebKitCSSMatrix(getComputedStyle(track).transform).m41;
+    }
+    startX = e.pageX;
+    lastX  = e.pageX;
+  };
+
+  const onMove = (e) => {
+    if (!isDragging) return;
+    velocity = e.pageX - lastX;
+    lastX    = e.pageX;
+    applyPos(posX + (e.pageX - startX));
+    startX   = e.pageX;
+  };
+
+  const onUp = () => {
+    if (!isDragging) return;
+    isDragging = false;
+    rafId = requestAnimationFrame(tick); // lancer l'inertie
+  };
+
+  outer.addEventListener("mousedown", onDown);
+  window.addEventListener("mouseup",   onUp);
+  outer.addEventListener("mousemove",  onMove);
+
+  outer.addEventListener("touchstart", (e) => onDown(e.touches[0]),  { passive: true });
+  outer.addEventListener("touchend",   ()  => onUp());
+  outer.addEventListener("touchmove",  (e) => onMove(e.touches[0]),  { passive: true });
+
+  const moveCursor = (e) => {
+    if (cursorRef.current)    cursorRef.current.style.transform    = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
+    if (cursorDotRef.current) cursorDotRef.current.style.transform = `translate(${e.clientX - 4}px,  ${e.clientY - 4}px)`;
+  };
+  window.addEventListener("mousemove", moveCursor);
+
+  return () => {
+    cancelAnimationFrame(rafId);
+    observer.disconnect();
+    outer.removeEventListener("mousedown", onDown);
+    window.removeEventListener("mouseup",   onUp);
+    outer.removeEventListener("mousemove",  onMove);
+    window.removeEventListener("mousemove", moveCursor);
+  };
+}, []);
   const allCards = [...expertises, ...expertises];
 
   return (

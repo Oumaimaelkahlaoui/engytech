@@ -434,7 +434,7 @@ export default function Login() {
           {/* ✅ Logo réel - blanc inversé sur fond sombre */}
           <div className="login-left__logo">
             <img
-              src="/unnamed.png"
+              src="/unnamed.webp"
               alt="ENGYTECH"
               style={{ height: 40, width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.92 }}
             />

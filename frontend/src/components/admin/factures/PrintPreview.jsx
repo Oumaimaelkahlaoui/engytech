@@ -1,5 +1,5 @@
 import { Ic } from "../icons/Icons";
-import watermarkImg from "/public/ARCH ENGY TECH.png";
+import watermarkImg from "/public/ARCH ENGY TECH.webp";
 
 // Helpers
 const F = "Arial, Helvetica, sans-serif";
@@ -42,7 +42,7 @@ const tdS = (al = "left", bold = false, bg = "#fff") => ({
 });
 
 function EngyLogo() {
-  return <img src="/unnamed.png" alt="Engytech Logo" style={{ height: 129, width: "auto", objectFit: "contain", display: "block", margin: "0 auto" }} />;
+  return <img src="/unnamed.webp" alt="Engytech Logo" style={{ height: 129, width: "auto", objectFit: "contain", display: "block", margin: "0 auto" }} />;
 }
 
 export function PrintPreview({ facture, items, onClose }) {
@@ -116,7 +116,7 @@ export function PrintPreview({ facture, items, onClose }) {
           backgroundImage: `url(${watermarkImg})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
-          backgroundSize: "310% 130%",
+          backgroundSize: "100% ",
           padding: "1.5cm 2cm 0",
           fontFamily: F,
           color: "#000",

@@ -1,7 +1,7 @@
 import { Ic } from "../icons/Icons";
 import { TYPES } from "../devis/devisConfig";
 
-export function Sidebar({ activeSection, activeKey, demandes, candidatures, factures, openSections, onToggleSection, onNavigate, onLogout }) {
+export function Sidebar({ activeSection, activeKey, demandes, candidatures, factures, attestations = [], openSections, onToggleSection, onNavigate, onLogout }) {
   const total   = demandes.length;
   const traites = demandes.filter(d => d.status === "traité").length;
   const pct     = total ? Math.round((traites / total) * 100) : 0;
@@ -11,37 +11,6 @@ export function Sidebar({ activeSection, activeKey, demandes, candidatures, fact
     if (key === "all") return total;
     return demandes.filter(d => d.devis_types?.nom_devis === key).length;
   }
-
-  const sections = [
-    {
-      key: "devis",
-      title: "Devis",
-      icon: Ic.stat_docs("#2a7fa5"),
-      orbBg: "rgba(42,127,165,0.15)",
-      count: total,
-    },
-    {
-      key: "rh",
-      title: "Ressources Humaines",
-      icon: Ic.users("#4ecda4"),
-      orbBg: "rgba(78,205,164,0.12)",
-      count: candidatures.length,
-    },
-    {
-      key: "factures",
-      title: "Facturation",
-      icon: Ic.invoice("#059669"),
-      orbBg: "rgba(5,150,105,0.12)",
-      count: factures.length,
-    },
-    {
-      key: "Attestation",
-      title: "Attestation",
-      icon: Ic.invoice("#059669"),
-      orbBg: "rgba(5,150,105,0.12)",
-      count: 0,
-    },
-  ];
 
   return (
     <aside className="g-side">
@@ -144,7 +113,7 @@ export function Sidebar({ activeSection, activeKey, demandes, candidatures, fact
             <span className="g-section-title">Attestation</span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
-            <span className="g-section-count">0</span>
+            <span className="g-section-count">{attestations.length}</span>  {/* ← corrigé */}
             <span className="g-section-chevron">{openSections.Attestation ? Ic.chevUp() : Ic.chevDown()}</span>
           </div>
         </div>
@@ -155,6 +124,11 @@ export function Sidebar({ activeSection, activeKey, demandes, candidatures, fact
                 {Ic.invoice(activeSection === "Attestation" ? "#059669" : "rgba(255,255,255,0.3)")}
               </span>
               <span className="g-nav-txt">Toutes les attestations</span>
+              {attestations.length > 0 && (
+                <span className="g-nav-pill" style={activeSection === "Attestation" ? { background: "rgba(5,150,105,0.2)", color: "#059669" } : {}}>
+                  {attestations.length}
+                </span>
+              )}
             </button>
           </div>
         )}

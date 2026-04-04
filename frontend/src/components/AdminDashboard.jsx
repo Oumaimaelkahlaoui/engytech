@@ -7,7 +7,7 @@ import { DevisView }               from "../components/admin/devis/DevisView";
 import { EditModal }               from "../components/admin/devis/EditModal";
 import { CandidaturesView }        from "../components/admin/candidatures/CandidaturesView";
 import { FacturesView }            from "../components/admin/factures/FacturesView";
-import { PrintPreviewAttestation } from "../components/admin/attestation/PrintPreviewAttestation";
+import { AttestationsView }        from "../components/admin/attestation/AttestationsView";
 import { Ic }                      from "../components/admin/icons/Icons";
 import { TYPES }                   from "../components/admin/devis/devisConfig";
 
@@ -17,6 +17,7 @@ export default function AdminDashboard() {
   const [demandes,      setDemandes]      = useState([]);
   const [candidatures,  setCandidatures]  = useState([]);
   const [factures,      setFactures]      = useState([]);
+  const [attestations,  setAttestations]  = useState([]);   // ← nouveau
   const [activeSection, setActiveSection] = useState("devis");
   const [activeKey,     setActiveKey]     = useState(null);
   const [editingId,     setEditingId]     = useState(null);
@@ -26,6 +27,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     fetchDemandes();
     fetchCandidatures();
+    fetchAttestations();                                      // ← nouveau
     supabase.from("factures").select("*").then(({ data }) => data && setFactures(data));
   }, []);
 
@@ -40,6 +42,11 @@ export default function AdminDashboard() {
   async function fetchCandidatures() {
     const { data, error } = await supabase.from("candidatures").select("*").order("created_at", { ascending: false });
     if (!error) setCandidatures(data);
+  }
+
+  async function fetchAttestations() {                        // ← nouveau
+    const { data, error } = await supabase.from("attestations").select("id");
+    if (!error) setAttestations(data || []);
   }
 
   async function marquerTraite(id) {
@@ -92,6 +99,7 @@ export default function AdminDashboard() {
         demandes={demandes}
         candidatures={candidatures}
         factures={factures}
+        attestations={attestations}        
         openSections={openSections}
         onToggleSection={toggleSection}
         onNavigate={handleNavigate}
@@ -105,7 +113,9 @@ export default function AdminDashboard() {
 
         {activeSection === "factures" && <FacturesView />}
 
-        {activeSection === "Attestation" && <PrintPreviewAttestation />}
+        {activeSection === "Attestation" && (
+          <AttestationsView onCountChange={fetchAttestations} />  /* { ← refresh count après ajout/suppression }*/
+        )}
 
         {activeSection === "devis" && !activeKey && (
           <div className="g-welcome">
